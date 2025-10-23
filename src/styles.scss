@@ -1,6 +1,13 @@
-/* Global styles for Rzume Landing Page */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
 
-// Import custom styles
-@import 'app/styles/variables';
-@import 'app/styles/mixins';
-@import 'app/styles/base';
+  // Hide scrollbars globally while keeping scroll functionality
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE and Edge
+
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari, Opera
+  }
+}

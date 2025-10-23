@@ -1,0 +1,40 @@
+.rzume-button-base {
+  border-radius: 8px;
+  height: 48px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+
+  .button-elements {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:disabled {
+    background-color: $light-gray;
+    color: $gray;
+    cursor: not-allowed;
+  }
+}
+
+.rzume-button-primary {
+  @extend .rzume-button-base;
+  background-color: $rzume-blue;
+  color: $white;
+}
+
+.rzume-button-secondary {
+  @extend .rzume-button-base;
+  background-color: $white;
+  color: $rzume-blue;
+
+}
+
+.rzume-button-outline {
+  @extend .rzume-button-base;
+  background-color: transparent;
+  border: 1px solid $rzume-blue;
+  color: $rzume-blue;
+
+}

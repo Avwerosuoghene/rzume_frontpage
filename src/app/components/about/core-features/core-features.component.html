@@ -1,0 +1,14 @@
+<section class="core-features-section">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title white">{{ sectionData.title }}</h1>
+    </div>
+    
+    <div class="core-features-grid">
+      <app-core-feature 
+        *ngFor="let feature of coreFeatures"
+        [feature]="feature">
+      </app-core-feature>
+    </div>
+  </div>
+</section>

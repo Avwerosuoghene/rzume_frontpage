@@ -1,6 +1,7 @@
 $black: rgba(28, 28, 30, 1);
 $rzume-blue: rgba(62, 127, 255, 1);
 $rzume-blue-light: rgba(62, 127, 255, 0.1);
+$rzume-blue-light-shade-2: rgba(62, 127, 255, 0.26);
 $light-blue: rgba(235, 244, 255, 1);
 $gray: rgba(139, 139, 139, 1);
 $light-gray: rgb(227,227,228);
@@ -13,5 +14,13 @@ $warning: 	rgb(240,44,44);
 $warning-light: 	rgba(240,44,44, 0.15);
 $white: rgba(255, 255, 255, 1);
 $lowsaturation-blue: rgb(102, 115, 144);
+$mustard-yellow: rgba(227, 127, 37, 1);
+
+// Hero overlay colors
+$hero-overlay-dark: rgba(0, 0, 0, 0.7);
+$hero-overlay-dark-light: rgba(0, 0, 0, 0.4);
+$hero-overlay-blue: rgba(62, 127, 255, 0.8);
+$hero-overlay-blue-light: rgba(62, 127, 255, 0.6);
+$white-transparent: rgba(255, 255, 255, 0.9);
 
 

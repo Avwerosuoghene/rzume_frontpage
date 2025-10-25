@@ -1,1 +1,69 @@
-<p>about works!</p>
+<div class="about-page">
+  <div class="header-container">
+    <app-header [headerConfig]="headerConfig" [isDark]="true"></app-header>
+  </div>
+  
+  <app-hero [heroData]="heroData" [showButtons]="true" [isDark]="true"></app-hero>
+  
+  <app-about-features></app-about-features>
+  
+  <app-core-features></app-core-features>
+  
+  <app-testimonials></app-testimonials>
+  
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <img src="assets/placeholders/cta-dashboard.png" alt="Rzume dashboard preview" class="cta-image">
+        <div class="cta-text">
+          <h2 class="cta-title">Organize Your Job Hunt. Land Your Dream Role.</h2>
+          <p class="cta-description">When that interview email lands, you'll know exactly when you applied and which resume you used.</p>
+          <button class="rzume-button-primary">
+            <span class="button-elements">Sign up free</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="final-cta-section">
+    <div class="final-cta-overlay">
+      <div class="container">
+        <div class="final-cta-content">
+          <h2 class="final-cta-title">Your job search, simplified. Start tracking today.</h2>
+          <button class="rzume-button-primary">
+            <span class="button-elements">Sign up free</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="assets/placeholders/rzume-logo.png" alt="Rzume Logo" class="footer-logo">
+          <span class="footer-brand-text">RZUME</span>
+        </div>
+        
+        <div class="footer-newsletter">
+          <p class="newsletter-text">Get job search tips and product updates</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button class="rzume-button-primary newsletter-button">
+              <span class="button-elements">Subscribe</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <a href="/about" class="footer-link">About</a>
+          <a href="/blog" class="footer-link">Blog</a>
+          <a href="/contact" class="footer-link">Contact</a>
+          <a href="/privacy" class="footer-link">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

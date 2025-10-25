@@ -1,0 +1,383 @@
+@import '../../styles/theme.scss';
+@import '../../styles/fonts.scss';
+
+.about-page {
+  min-height: 100vh;
+}
+
+.header-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 0;
+  pointer-events: none;
+  
+  app-header {
+    pointer-events: all;
+  }
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  
+  @media (min-width: 768px) {
+    padding: 0 20px;
+  }
+  
+  @media (min-width: 1200px) {
+    width: 1200px;
+  }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+  
+  @media (min-width: 768px) {
+    margin-bottom: 60px;
+  }
+}
+
+.section-title {
+  font-size: $font-size-3xl;
+  color: $black;
+  margin-bottom: 12px;
+  
+  &.white {
+    color: $white;
+  }
+  
+  @media (min-width: 768px) {
+    font-size: $font-size-4xl;
+    margin-bottom: 16px;
+  }
+}
+
+.section-subtitle {
+  font-size: $font-size-base;
+  color: $gray;
+  margin: 0 auto;
+  width: 100%;
+  
+  @media (min-width: 768px) {
+    font-size: $font-size-lg;
+    width: 600px;
+  }
+}
+
+.about-section {
+  background-color: $white;
+  
+  @media (min-width: 768px) {
+  }
+}
+
+.about-features {
+  width: 100%;
+  
+  @media (min-width: 768px) {
+    width: 1000px;
+    margin: 0 auto;
+  }
+}
+
+.core-features-section {
+  padding: 60px 0;
+  background-color: $rzume-blue;
+  
+  @media (min-width: 768px) {
+    padding: 100px 0;
+  }
+}
+
+.core-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    width: 1000px;
+  }
+}
+
+.testimonials-section {
+  padding: 60px 0;
+  background-color: $extra-light-gray;
+  
+  @media (min-width: 768px) {
+    padding: 100px 0;
+  }
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    width: 1000px;
+  }
+}
+
+.cta-section {
+  padding: 60px 0;
+  background-color: $white;
+  
+  @media (min-width: 768px) {
+    padding: 100px 0;
+  }
+}
+
+.cta-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+}
+
+.cta-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  
+  @media (min-width: 768px) {
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.cta-text {
+  padding: 16px 0;
+  
+  @media (min-width: 768px) {
+    padding: 20px 0;
+  }
+}
+
+.cta-title {
+  @include font-display;
+  font-size: $font-size-3xl;
+  color: $black;
+  margin-bottom: 16px;
+  
+  @media (min-width: 768px) {
+    font-size: $font-size-4xl;
+    margin-bottom: 20px;
+  }
+}
+
+.cta-description {
+  @include font-body;
+  font-size: $font-size-base;
+  color: $gray;
+  margin-bottom: 24px;
+  line-height: 1.6;
+  
+  @media (min-width: 768px) {
+    font-size: $font-size-lg;
+    margin-bottom: 32px;
+  }
+}
+
+.final-cta-section {
+  position: relative;
+  min-height: 300px;
+//   background-image: url('assets/placeholders/final-cta-bg.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media (min-width: 768px) {
+    min-height: 400px;
+  }
+}
+
+.final-cta-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, $hero-overlay-dark 0%, rgba(0, 0, 0, 0.5) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.final-cta-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.final-cta-title {
+  @include font-display;
+  font-size: $font-size-3xl;
+  color: $white;
+  margin-bottom: 24px;
+  width: 100%;
+  
+  @media (min-width: 768px) {
+    font-size: $font-size-5xl;
+    margin-bottom: 32px;
+    width: 800px;
+  }
+}
+
+.footer {
+  background-color: $rzume-blue;
+  padding: 40px 0 30px;
+  
+  @media (min-width: 768px) {
+    padding: 60px 0 40px;
+  }
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  text-align: center;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: auto 1fr auto;
+    gap: 40px;
+    align-items: center;
+    text-align: left;
+  }
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
+}
+
+.footer-logo {
+  width: 28px;
+  height: 28px;
+  
+  @media (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.footer-brand-text {
+  @include font-heading;
+  font-size: $font-size-lg;
+  color: $white;
+  font-weight: $font-weight-bold;
+  
+  @media (min-width: 768px) {
+    font-size: $font-size-xl;
+  }
+}
+
+.footer-newsletter {
+  width: 100%;
+  margin: 0 auto;
+  
+  @media (min-width: 768px) {
+    width: 400px;
+  }
+}
+
+.newsletter-text {
+  @include font-body;
+  color: $white;
+  margin-bottom: 12px;
+  font-size: $font-size-sm;
+  
+  @media (min-width: 768px) {
+    font-size: $font-size-base;
+    margin-bottom: 16px;
+  }
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  
+  @media (min-width: 480px) {
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+.newsletter-input {
+  flex-grow: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: $font-size-sm;
+  
+  @media (min-width: 768px) {
+    padding: 12px 16px;
+    font-size: $font-size-base;
+  }
+  
+  &::placeholder {
+    color: $gray;
+  }
+}
+
+.newsletter-button {
+  background-color: $white;
+  color: $rzume-blue;
+  
+  &:hover {
+    background-color: $light-gray;
+  }
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+  @media (min-width: 768px) {
+    gap: 24px;
+    justify-content: flex-end;
+  }
+}
+
+.footer-link {
+  @include font-body;
+  color: $white;
+  text-decoration: none;
+  font-size: $font-size-sm;
+  
+  @media (min-width: 768px) {
+    font-size: $font-size-base;
+  }
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}

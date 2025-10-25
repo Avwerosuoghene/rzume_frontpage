@@ -1,0 +1,27 @@
+<section class="about-features-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">{{ sectionData.label }}</p>
+      <h1 class="section-title">{{ sectionData.title }}</h1>
+    </div>
+    
+    <div class="features-grid">
+      <div 
+        *ngFor="let card of featureCards" 
+        class="feature-card"
+        [class.light-blue]="card.backgroundColor === 'light-blue'"
+        [class.blue]="card.backgroundColor === 'blue'"
+        [class.image-card]="card.type === 'image'">
+        
+        <ng-container *ngIf="card.type === 'text'">
+          <h3 class="feature-title">{{ card.title }}</h3>
+          <p class="feature-description">{{ card.description }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="card.type === 'image'">
+          <img [src]="card.imageSrc" [alt]="card.imageAlt" class="feature-image">
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ sectionData.title }}</h2>
+      <p class="section-subtitle">{{ sectionData.subtitle }}</p>
+    </div>
+    
+    <div class="testimonials-grid">
+      <app-testimonial 
+        *ngFor="let testimonial of testimonials"
+        [testimonial]="testimonial">
+      </app-testimonial>
+    </div>
+  </div>
+</section>

@@ -1,13 +1,474 @@
+@import "./app/styles/theme.scss";
+@import "./app/styles/fonts.scss";
+
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-
+  font-family: "Poppins", sans-serif;
+  
   // Hide scrollbars globally while keeping scroll functionality
   scrollbar-width: none; // Firefox
   -ms-overflow-style: none; // IE and Edge
-
+  
   &::-webkit-scrollbar {
     display: none; // Chrome, Safari, Opera
+  }
+}
+
+form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.mat-button,
+.mat-raised-button,
+.mat-icon-button,
+.mat-fab,
+.mat-mini-fab {
+  border-radius: 10px;
+}
+
+.blurred {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+a {
+  cursor: pointer;
+}
+
+.minor-element_flex {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.light_text {
+  color: $gray;
+}
+
+.green_text {
+  color: $basic-green;
+}
+
+.bold {
+  font-weight: $font-weight-semibold;
+}
+
+.warning {
+  color: $warning;
+}
+
+// Typography System - Mobile First Approach
+
+// H1 - Display/Hero headings
+h1 {
+  @include font-display;
+  font-size: $font-size-2xl;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-3xl;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-4xl;
+  }
+}
+
+h2 {
+  @include font-heading;
+  font-size: $font-size-xl;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-2xl;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-3xl;
+  }
+}
+
+// H3 - Section headings
+h3 {
+  @include font-heading;
+  font-size: $font-size-lg;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-xl;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-2xl;
+  }
+}
+
+// H4 - Subsection headings
+h4 {
+  @include font-heading;
+  font-size: $font-size-base;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-md;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-lg;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 20px;
+
+  label {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    transform: translateY(0) scale(1);
+    transform-origin: left top;
+    font-weight: $font-weight-regular;
+    color: $gray;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    background-color: $white;
+    padding: 0 4px;
+    z-index: 1;
+    font-size: $font-size-sm;
+    line-height: 1;
+
+    @media (min-width: 600px) {
+      font-size: $font-size-base;
+    }
+
+    @media (min-width: 768px) {
+      top: 16px;
+    }
+  }
+
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+      position: absolute;
+      right: 12px;
+      color: $gray;
+      cursor: pointer;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+      z-index: 2;
+
+      &:hover {
+        color: $rzume-blue;
+        transform: scale(1.1);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      @media (min-width: 768px) {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+        right: 16px;
+      }
+    }
+  }
+
+  .error-message {
+    text-align: start;
+    font-size: 12px;
+    color: $warning;
+    margin-top: 4px;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  // Floating label when input is focused or has value
+  &:focus-within label,
+  &.has-value label {
+    top: -8px;
+    transform: translateY(0) scale(0.85);
+    color: $rzume-blue;
+    font-weight: $font-weight-medium;
+  }
+
+  &.has-value:not(:focus-within) label {
+    color: $gray;
+  }
+
+  // Hide placeholder by default
+  input::placeholder,
+  textarea::placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  // Show placeholder when focused
+  &:focus-within input::placeholder,
+  &:focus-within textarea::placeholder {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  padding-right: 48px; 
+  border: 1px solid $light-gray;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+  transform: translateY(0);
+
+  &:hover:not(:focus):not(:read-only) {
+    border-color: darken($light-gray, 10%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $rzume-blue;
+    box-shadow: 0 0 0 3px rgba(62, 127, 255, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  &.error {
+    border-color: $warning;
+    animation: shake 0.4s ease-in-out;
+    
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &:read-only {
+    background-color: $extra-light-gray;
+    cursor: not-allowed;
+    color: $gray;
+    transform: none;
+    
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: 14px 18px;
+    padding-right: 56px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    animation: none;
+    transform: none !important;
+    
+    &:hover {
+      transform: none !important;
+    }
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-4px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(4px);
+  }
+}
+
+// Global form input container styles
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  // Select dropdown styling
+  .form-select {
+    appearance: none;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 48px;
+    cursor: pointer;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      background-position: right 18px center;
+      padding-right: 56px;
+    }
+  }
+
+  // Date picker field styling
+  .date-field {
+    .input-wrapper {
+      position: relative;
+
+      .date-toggle {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        
+        ::ng-deep {
+          .mat-mdc-icon-button {
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  // Select field specific styling
+  .select-field {
+    .input-wrapper {
+      position: relative;
+    }
+  }
+
+  // Notes/textarea field
+  .notes-field {
+    textarea.form-input {
+      resize: vertical;
+      min-height: 80px;
+    }
+  }
+}
+
+p,
+label,
+.form-input {
+  margin: 0;
+  @include font-body;
+  font-size: $font-size-sm;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-base;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-base;
+  }
+}
+
+// A - Links
+a {
+  @include font-body;
+  font-size: $font-size-sm;
+  color: rgba(62, 127, 255, 1);
+  cursor: pointer;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-base;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-base;
+  }
+}
+
+// Span elements inherit from parent but can have utility classes
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+
+.desktop_only {
+  display: none;
+
+  @media (min-width: 600px) {
+    display: block;
+  }
+}
+
+.mobile_only {
+  display: block;
+
+  @media (min-width: 600px) {
+    display: none;
+  }
+}
+
+@media (max-width: 599px) {
+  .add-job-dialog-panel {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw !important;
+
+    .mat-mdc-dialog-container .mdc-dialog__surface {
+      border-radius: 0;
+    }
+  }
+}
+
+.custom-checkbox {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $white;
+  border: 1px solid $light-gray;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+
+  &:checked {
+    background-color: $rzume-blue;
+    border-color: $rzume-blue;
+  }
+
+  &:checked::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 3.5px;
+    width: 3px;
+    height: 6px;
+    border: solid $white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+    border-color: $rzume-blue;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
   }
 }

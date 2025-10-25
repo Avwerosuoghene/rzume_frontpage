@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroSection } from '../../../core/models';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-hero',
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })

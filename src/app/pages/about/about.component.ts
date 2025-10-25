@@ -5,12 +5,14 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { AboutFeaturesComponent } from '../../components/about/about-features/about-features';
 import { CoreFeaturesComponent } from '../../components/about/core-features/core-features.component';
 import { TestimonialsComponent } from '../../components/about/testimonials/testimonials';
+import { BlogComponent } from '../../components/about/blog/blog.component';
 import { 
   ABOUT_HERO, 
   HEADER_CONFIG,
   HeroSection,
   HeaderConfig
 } from '../../core/models';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-about',
@@ -21,7 +23,9 @@ import {
     HeaderComponent,
     AboutFeaturesComponent,
     CoreFeaturesComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
+    BlogComponent,
+    MatButtonModule
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'

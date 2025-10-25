@@ -1,15 +1,15 @@
-@import "./app/styles/theme.scss";
-@import "./app/styles/fonts.scss";
+@import './app/styles/theme.scss';
+@import './app/styles/fonts.scss';
 
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: "Poppins", sans-serif;
-  
+  font-family: 'Poppins', sans-serif;
+
   // Hide scrollbars globally while keeping scroll functionality
   scrollbar-width: none; // Firefox
   -ms-overflow-style: none; // IE and Edge
-  
+
   &::-webkit-scrollbar {
     display: none; // Chrome, Safari, Opera
   }
@@ -35,6 +35,17 @@ form {
 
 a {
   cursor: pointer;
+  margin: 0;
+  @include font-body;
+  font-size: $font-size-sm;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-base;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-base;
+  }
 }
 
 .minor-element_flex {
@@ -231,7 +242,7 @@ h4 {
 .form-input {
   width: 100%;
   padding: 12px 16px;
-  padding-right: 48px; 
+  padding-right: 48px;
   border: 1px solid $light-gray;
   border-radius: 8px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -254,7 +265,7 @@ h4 {
   &.error {
     border-color: $warning;
     animation: shake 0.4s ease-in-out;
-    
+
     &:focus {
       box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
     }
@@ -265,7 +276,7 @@ h4 {
     cursor: not-allowed;
     color: $gray;
     transform: none;
-    
+
     &:hover {
       transform: none;
       box-shadow: none;
@@ -281,7 +292,7 @@ h4 {
     transition: none;
     animation: none;
     transform: none !important;
-    
+
     &:hover {
       transform: none !important;
     }
@@ -289,13 +300,21 @@ h4 {
 }
 
 @keyframes shake {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
-  10%, 30%, 50%, 70%, 90% {
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
     transform: translateX(-4px);
   }
-  20%, 40%, 60%, 80% {
+  20%,
+  40%,
+  60%,
+  80% {
     transform: translateX(4px);
   }
 }
@@ -337,7 +356,7 @@ h4 {
         right: 8px;
         top: 50%;
         transform: translateY(-50%);
-        
+
         ::ng-deep {
           .mat-mdc-icon-button {
             width: 40px;
@@ -453,7 +472,7 @@ body {
   }
 
   &:checked::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 1px;
     left: 3.5px;

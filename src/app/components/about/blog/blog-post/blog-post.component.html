@@ -1,0 +1,23 @@
+<article class="blog-post-card">
+  <div class="post-image-container">
+    <img [src]="post.imageSrc" [alt]="post.imageAlt" class="post-image" />
+    <div class="post-date-badge-container">
+        <p class="post-date-badge">{{ post.date }}</p>
+    </div>
+  </div>
+
+  <div class="post-content">
+    <div class="post-meta">
+      <span class="comments-count">{{ post.commentsCount }} Comments</span>
+      <span class="meta-separator">•</span>
+      <span class="post-author">by: {{ post.author }}</span>
+    </div>
+
+    <h3 class="post-title">{{ post.title }}</h3>
+
+    <a [href]="post.readMoreUrl" class="read-more-link">
+      READ MORE
+    <img src="assets/icons/arrow_icon.svg" alt="arrow icon">
+    </a>
+  </div>
+</article>

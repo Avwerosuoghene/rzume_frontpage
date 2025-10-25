@@ -5,11 +5,17 @@
       <p class="section-subtitle">{{ sectionData.subtitle }}</p>
     </div>
     
-    <div class="testimonials-grid">
-      <app-testimonial 
-        *ngFor="let testimonial of testimonials"
-        [testimonial]="testimonial">
-      </app-testimonial>
+    <div class="testimonials-carousel" 
+         (mouseenter)="onMouseEnter()" 
+         (mouseleave)="onMouseLeave()">
+      <div class="testimonials-container" 
+           #testimonialContainer>
+        <app-testimonial 
+          *ngFor="let testimonial of testimonials"
+          [testimonial]="testimonial"
+          class="testimonial-item">
+        </app-testimonial>
+      </div>
     </div>
   </div>
 </section>

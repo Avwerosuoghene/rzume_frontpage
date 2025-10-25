@@ -1,1 +1,1 @@
-// Export helper classes here when created
+export * from './carousel.helper';

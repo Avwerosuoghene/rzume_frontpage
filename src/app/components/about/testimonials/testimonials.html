@@ -5,17 +5,22 @@
       <p class="section-subtitle">{{ sectionData.subtitle }}</p>
     </div>
     
-    <div class="testimonials-carousel" 
-         (mouseenter)="onMouseEnter()" 
-         (mouseleave)="onMouseLeave()">
-      <div class="testimonials-container" 
-           #testimonialContainer>
-        <app-testimonial 
-          *ngFor="let testimonial of testimonials"
-          [testimonial]="testimonial"
-          class="testimonial-item">
-        </app-testimonial>
-      </div>
-    </div>
+    <swiper-container
+      slides-per-view="1"
+      space-between="24"
+      autoplay="true"
+      autoplay-delay="4000"
+      autoplay-pause-on-mouse-enter="true"
+      pagination="true"
+      pagination-clickable="true"
+      pagination-dynamic-bullets="false"
+      loop="false"
+      slides-per-group="1"
+      [breakpoints]="swiperBreakpoints">
+      
+      <swiper-slide *ngFor="let testimonial of testimonials">
+        <app-testimonial [testimonial]="testimonial"></app-testimonial>
+      </swiper-slide>
+    </swiper-container>
   </div>
 </section>

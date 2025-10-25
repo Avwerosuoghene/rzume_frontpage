@@ -1,14 +1,14 @@
 <header class="header" [class.dark]="isDark">
   <div class="header-container">
     <div class="header-brand">
-      <img [src]="headerConfig.logoSrc" [alt]="headerConfig.logoAlt" class="logo">
+      <img [src]="headerConfig.logoSrc" [alt]="headerConfig.logoAlt" class="logo" />
     </div>
-    
+
     <nav class="header-nav" [class.open]="isMenuOpen">
       <ul class="nav-list">
         <li class="nav-item" *ngFor="let item of headerConfig.navigationItems">
-          <a 
-            [routerLink]="item.route" 
+          <a
+            [routerLink]="item.route"
             class="nav-link"
             [class.active]="item.isActive"
             (click)="closeMenu()"
@@ -18,7 +18,7 @@
         </li>
       </ul>
     </nav>
-    
+
     <div class="header-actions">
       <button mat-button class="rzume-button-outline-text header-button">
         <span class="button-elements">{{ headerConfig.loginText }}</span>
@@ -27,7 +27,7 @@
         <span class="button-elements">{{ headerConfig.signUpText }}</span>
       </button>
     </div>
-    
+
     <button class="mobile-menu-btn" (click)="toggleMenu()" [class.open]="isMenuOpen">
       <span class="menu-line"></span>
       <span class="menu-line"></span>

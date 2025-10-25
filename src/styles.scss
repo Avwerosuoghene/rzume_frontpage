@@ -1,6 +1,8 @@
 @import './app/styles/theme.scss';
 @import './app/styles/fonts.scss';
 
+@import '@angular/material/prebuilt-themes/azure-blue.css';
+
 * {
   box-sizing: border-box;
   margin: 0;

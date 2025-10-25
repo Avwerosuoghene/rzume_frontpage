@@ -6,6 +6,7 @@ import { AboutFeaturesComponent } from '../../components/about/about-features/ab
 import { CoreFeaturesComponent } from '../../components/about/core-features/core-features.component';
 import { TestimonialsComponent } from '../../components/about/testimonials/testimonials';
 import { BlogComponent } from '../../components/about/blog/blog.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 import { 
   ABOUT_HERO, 
   HEADER_CONFIG,
@@ -25,6 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
     CoreFeaturesComponent,
     TestimonialsComponent,
     BlogComponent,
+    FooterComponent,
     MatButtonModule
   ],
   templateUrl: './about.component.html',

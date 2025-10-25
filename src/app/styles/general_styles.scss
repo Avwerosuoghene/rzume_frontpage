@@ -29,35 +29,57 @@
 
 .rzume-button-primary {
   @extend .rzume-button-base;
-  background-color: $rzume-blue;
-  color: $white;
+  
+  &.mat-mdc-button {
+    background-color: $rzume-blue ;
+    color: $white ;
+    
+    .mdc-button__label {
+      color: $white ;
+    }
+  }
 }
 
 .rzume-button-secondary {
   @extend .rzume-button-base;
-  background-color: $white;
-  color: $rzume-blue;
-
+  
+  &.mat-mdc-button {
+    background-color: $white ;
+    color: $rzume-blue ;
+    
+    .mdc-button__label {
+      color: $rzume-blue ;
+    }
+  }
 }
 
 .rzume-button-outline {
   @extend .rzume-button-base;
-  background-color: transparent;
-  border: 1px solid $white;
-  color: $white;
+  
+  &.mat-mdc-button {
+    background-color: transparent ;
+    border: 1px solid $white ;
+    color: $white ;
+    
+    .mdc-button__label {
+      color: $white ;
+    }
+  }
 }
 
 .rzume-button-outline-text {
   @extend .rzume-button-base;
-  background-color: transparent;
-  border: none;
-  color: $white !important;
-  
   .button-elements {
-    color: $white !important;
+    color: $white ;
   }
   
-  &.mat-button {
-    color: $white !important;
+  &.mat-mdc-button {
+    background-color: transparent ;
+    border: none ;
+    color: $white ;
+    
+    .mdc-button__label {
+      color: $white ;
+    }
   }
 }

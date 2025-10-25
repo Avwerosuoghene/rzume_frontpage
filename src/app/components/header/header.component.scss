@@ -3,25 +3,71 @@
 @import '../../styles/general_styles.scss';
 
 .header {
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
-  border: none;
-  border-radius: 10px;
   position: absolute;
-  top: 16px;
-  left: 16px;
-  right: 16px;
   z-index: 100;
+  border: none;
   
-  @media (min-width: 768px) {
-    top: 20px;
-    left: 20px;
-    right: 20px;
+  &.light {
+    background-color: $white;
+    backdrop-filter: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    .brand-text {
+      color: $black;
+    }
+    
+    .nav-link {
+      color: $black;
+      
+      &:hover,
+      &.active {
+        color: $rzume-blue;
+      }
+    }
+    
+    .menu-line {
+      background-color: $black;
+    }
+    
+    .rzume-button-outline-text {
+      color: $black;
+      
+      .button-elements {
+        color: $black;
+      }
+      
+      &.mat-mdc-button {
+        color: $black;
+        
+        .mdc-button__label {
+          color: $black;
+        }
+        
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
   }
   
   &.dark {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    border-radius: 10px;
+    top: 16px;
+    left: 16px;
+    right: 16px;
     box-shadow: 0 2px 8px 1px rgba(255, 255, 255, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.15);
+    
+    @media (min-width: 768px) {
+      top: 20px;
+      left: 20px;
+      right: 20px;
+    }
     
     .brand-text {
       color: $white;
@@ -30,21 +76,30 @@
     .nav-link {
       color: $white;
       
-      &:hover {
-        color: $rzume-blue;
-      }
-    }
-    
-    .login-btn {
-      color: $white;
-      
-      &:hover {
+      &:hover,
+      &.active {
         color: $rzume-blue;
       }
     }
     
     .menu-line {
       background-color: $white;
+    }
+    
+    .rzume-button-outline-text {
+      color: $white;
+      
+      .button-elements {
+        color: $white;
+      }
+      
+      &.mat-mdc-button {
+        color: $white;
+        
+        .mdc-button__label {
+          color: $white;
+        }
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
-<header class="header" [class.dark]="isDark">
+<header class="header" [class.dark]="isDark" [class.light]="!isDark">
   <div class="header-container">
     <div class="header-brand">
-      <img [src]="headerConfig.logoSrc" [alt]="headerConfig.logoAlt" class="logo" />
+      <img [src]="isDark ? 'assets/icons/rzume_logo_white.svg' : 'assets/icons/rzume_logo_black.svg'" alt="rzume logo" class="logo" />
     </div>
 
     <nav class="header-nav" [class.open]="isMenuOpen">
@@ -23,7 +23,10 @@
       <button mat-button class="rzume-button-outline-text header-button">
         <span class="button-elements">{{ headerConfig.loginText }}</span>
       </button>
-      <button mat-button class="rzume-button-secondary header-button">
+      <button 
+        mat-button 
+        [class]="!isDark ? 'rzume-button-primary header-button' : 'rzume-button-secondary header-button'"
+      >
         <span class="button-elements">{{ headerConfig.signUpText }}</span>
       </button>
     </div>

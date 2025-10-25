@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,9 +11,9 @@ import { HeaderConfig } from '../../core/models';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent  {
   @Input() headerConfig!: HeaderConfig;
-  @Input() isDark: boolean = false;
+  @Input() isDark: boolean = true;
   
   isMenuOpen = false;
   

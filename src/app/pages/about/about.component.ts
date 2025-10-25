@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroComponent } from '../../components/about/hero/hero.component';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -14,6 +14,7 @@ import {
   HeaderConfig
 } from '../../core/models';
 import { MatButtonModule } from '@angular/material/button';
+import { ScrollHeaderHelper, HeaderTheme, ScrollHeaderConfig } from '../../core/helpers';
 
 @Component({
   selector: 'app-about',
@@ -32,12 +33,50 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit, AfterViewInit {
+  private static readonly DOM_READY_DELAY_MS = 100;
+  private static readonly SCROLL_BUFFER_DISTANCE_PX = 100;
+  
   heroData: HeroSection = ABOUT_HERO;
   headerConfig: HeaderConfig = HEADER_CONFIG;
+  
+  private readonly scrollHelper: ScrollHeaderHelper;
+  private readonly scrollConfig: ScrollHeaderConfig = {
+    bufferDistance: AboutComponent.SCROLL_BUFFER_DISTANCE_PX,
+    initialTheme: HeaderTheme.DARK,
+    darkTheme: HeaderTheme.DARK,
+    lightTheme: HeaderTheme.LIGHT
+  };
+  
+  @ViewChild('heroSection', { static: false }) heroSection!: ElementRef;
+
+  constructor() {
+    this.scrollHelper = new ScrollHeaderHelper(this.scrollConfig);
+  }
 
   ngOnInit(): void {
     this.setActiveNavigation();
+  }
+
+  ngAfterViewInit(): void {
+    this.initializeScrollHelper();
+  }
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.scrollHelper.checkScrollPosition();
+  }
+
+  get isHeaderDark(): boolean {
+    return this.scrollHelper.isDarkTheme();
+  }
+
+  private initializeScrollHelper(): void {
+    this.scrollHelper.setTargetElement(this.heroSection);
+    
+    setTimeout(() => {
+      this.scrollHelper.checkScrollPosition();
+    }, AboutComponent.DOM_READY_DELAY_MS);
   }
 
   private setActiveNavigation(): void {

@@ -1,9 +1,11 @@
 <div class="about-page">
   <div class="header-container">
-    <app-header [headerConfig]="headerConfig" [isDark]="true"></app-header>
+    <app-header [headerConfig]="headerConfig" [isDark]="isHeaderDark"></app-header>
   </div>
   
-  <app-hero [heroData]="heroData" [showButtons]="true" [isDark]="true"></app-hero>
+  <div #heroSection>
+    <app-hero [heroData]="heroData" [showButtons]="true" [isDark]="true"></app-hero>
+  </div>
   
   <app-about-features></app-about-features>
   

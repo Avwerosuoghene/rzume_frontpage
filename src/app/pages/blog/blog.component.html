@@ -37,7 +37,7 @@
         <div class="popular-posts">
           <p class="sidebar-title">POPULAR POSTS</p>
           <div class="popular-posts-list">
-            <div class="popular-post" *ngFor="let post of popularPosts">
+            <div class="popular-post" *ngFor="let post of popularPosts" (click)="loadPostAsFeatured(post)">
               <div class="popular-post-image">
                 <img [src]="post.imageUrl" [alt]="post.title" />
               </div>

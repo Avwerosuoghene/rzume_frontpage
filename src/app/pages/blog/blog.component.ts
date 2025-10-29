@@ -49,4 +49,18 @@ export class BlogComponent implements OnInit {
       }))
     };
   }
+
+  loadPostAsFeatured(post: BlogPagePost): void {
+    this.featuredPost = post;
+    
+    this.updatePopularPosts(post);
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  private updatePopularPosts(newFeaturedPost: BlogPagePost): void {
+    const allOtherPosts = BLOG_PAGE_POSTS.filter(post => post.id !== newFeaturedPost.id);
+    
+    this.popularPosts = allOtherPosts.slice(0, 4);
+  }
 }

@@ -18,9 +18,11 @@
       slides-per-group="1"
       [breakpoints]="swiperBreakpoints">
       
-      <swiper-slide *ngFor="let testimonial of testimonials">
-        <app-testimonial [testimonial]="testimonial"></app-testimonial>
-      </swiper-slide>
+      @for (testimonial of testimonials; track testimonial.id) {
+        <swiper-slide>
+          <app-testimonial [testimonial]="testimonial"></app-testimonial>
+        </swiper-slide>
+      }
     </swiper-container>
   </div>
 </section>

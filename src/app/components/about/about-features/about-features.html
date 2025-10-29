@@ -6,22 +6,23 @@
     </div>
     
     <div class="features-grid">
-      <div 
-        *ngFor="let card of featureCards" 
-        class="feature-card"
-        [class.light-blue]="card.backgroundColor === 'light-blue'"
-        [class.blue]="card.backgroundColor === 'blue'"
+      @for (card of featureCards; track card.id) {
+        <div 
+          class="feature-card"
+          [class.light-blue]="card.backgroundColor === 'light-blue'"
+          [class.blue]="card.backgroundColor === 'blue'"
         [class.image-card]="card.type === 'image'">
-        
+          
         <ng-container *ngIf="card.type === 'text'">
-          <h3 class="feature-title">{{ card.title }}</h3>
-          <p class="feature-description">{{ card.description }}</p>
+            <h3 class="feature-title">{{ card.title }}</h3>
+            <p class="feature-description">{{ card.description }}</p>
         </ng-container>
         
         <ng-container *ngIf="card.type === 'image'">
           <img [src]="card.imageSrc" [alt]="card.imageAlt" class="feature-image">
         </ng-container>
-      </div>
+        </div>
+      }
     </div>
   </div>
 </section>

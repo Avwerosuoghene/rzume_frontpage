@@ -37,14 +37,16 @@
         <div class="popular-posts">
           <p class="sidebar-title">POPULAR POSTS</p>
           <div class="popular-posts-list">
-            <div class="popular-post" *ngFor="let post of popularPosts" (click)="loadPostAsFeatured(post)">
-              <div class="popular-post-image">
-                <img [src]="post.imageUrl" [alt]="post.title" />
+            @for (post of popularPosts; track post.id) {
+              <div class="popular-post" (click)="loadPostAsFeatured(post)">
+                <div class="popular-post-image">
+                  <img [src]="post.imageUrl" [alt]="post.title" />
+                </div>
+                <div class="popular-post-content">
+                  <h6 class="popular-post-title">{{ post.title }}</h6>
+                </div>
               </div>
-              <div class="popular-post-content">
-                <h6 class="popular-post-title">{{ post.title }}</h6>
-              </div>
-            </div>
+            }
           </div>
         </div>
 

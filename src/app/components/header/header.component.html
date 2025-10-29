@@ -6,16 +6,18 @@
 
     <nav class="header-nav" [class.open]="isMenuOpen">
       <ul class="nav-list">
-        <li class="nav-item" *ngFor="let item of headerConfig.navigationItems">
-          <a
-            [routerLink]="item.route"
-            class="nav-link"
-            [class.active]="item.isActive"
-            (click)="closeMenu()"
-          >
-            {{ item.label }}
-          </a>
-        </li>
+        @for (item of headerConfig.navigationItems; track item.id) {
+          <li class="nav-item">
+            <a
+              [routerLink]="item.route"
+              class="nav-link"
+              [class.active]="item.isActive"
+              (click)="closeMenu()"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
       </ul>
     </nav>
 

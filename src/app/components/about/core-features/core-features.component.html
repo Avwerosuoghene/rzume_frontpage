@@ -5,10 +5,11 @@
     </div>
     
     <div class="core-features-grid">
-      <app-core-feature 
-        *ngFor="let feature of coreFeatures"
-        [feature]="feature">
-      </app-core-feature>
+      @for (feature of coreFeatures; track feature.id) {
+        <app-core-feature 
+          [feature]="feature">
+        </app-core-feature>
+      }
     </div>
   </div>
 </section>

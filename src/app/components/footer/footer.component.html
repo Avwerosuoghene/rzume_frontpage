@@ -19,9 +19,11 @@
 
       <div class="footer-right">
         <nav class="footer-nav">
-          <a *ngFor="let link of footerLinks" [routerLink]="link.route" class="footer-link">
-            {{ link.label }}
-          </a>
+          @for (link of footerLinks; track link.route) {
+            <a [routerLink]="link.route" class="footer-link">
+              {{ link.label }}
+            </a>
+          }
         </nav>
       </div>
 

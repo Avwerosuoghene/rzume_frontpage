@@ -6,11 +6,12 @@
     </div>
     
     <div class="blog-grid">
-      <app-blog-post 
-        *ngFor="let post of blogPosts" 
-        [post]="post"
-        class="blog-grid-item">
-      </app-blog-post>
+      @for (post of blogPosts; track post.id) {
+        <app-blog-post 
+          [post]="post"
+          class="blog-grid-item">
+        </app-blog-post>
+      }
     </div>
   </div>
 </section>

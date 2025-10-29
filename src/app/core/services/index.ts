@@ -1,1 +1,1 @@
-// Export services here when created
+export * from './animation.service';

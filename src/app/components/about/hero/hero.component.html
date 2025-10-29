@@ -1,6 +1,6 @@
-<section class="hero-section" [class.dark]="isDark">
+<section #heroSection class="hero-section" [class.dark]="isDark">
   <div class="hero-background">
-    <img [src]="heroData.backgroundImageSrc" [alt]="heroData.backgroundImageAlt" class="hero-bg-image">
+    <img #heroImage [src]="heroData.backgroundImageSrc" [alt]="heroData.backgroundImageAlt" class="hero-bg-image">
     <div class="hero-overlay"></div>
   </div>
   

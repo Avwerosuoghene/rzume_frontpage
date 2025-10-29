@@ -24,7 +24,7 @@ $font-size-6xl: 48px;     // 6X large (hero display)
 // Typography Mixins
 @mixin font-display {
   font-family: "Poppins", sans-serif;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-semibold;
   line-height: 1.2;
 }
 

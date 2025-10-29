@@ -34,7 +34,6 @@ export class BlogComponent implements OnInit {
   popularPosts: BlogPagePost[] = POPULAR_POSTS;
   newsletterData: NewsletterSignup = NEWSLETTER_SIGNUP;
 
-  // Blog page uses light header theme consistently
   isHeaderDark: boolean = false;
 
   ngOnInit(): void {

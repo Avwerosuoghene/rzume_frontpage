@@ -23,15 +23,37 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
     id: '1',
     title: 'Designers are meant to be loved, not to be understood.',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et rhoncus mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris.',
-    content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et rhoncus mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales.
-
-    Quisque sagittis orci ut diam condimentum, vel euismod erat placerat. In iaculis arcu eros, eget tempus quis lectus dapibus, ut elementum dolor id, luctus erat. Maecenas in lacinia felis. Sed vitae dui in dui consequat, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet.
-
-    Pellentesque commodo lacus at sodales sodales. Quisque sagittis orci ut diam condimentum, vel euismod erat placerat. In iaculis arcu eros, eget tempus quis lectus dapibus, ut elementum dolor id, luctus erat. Maecenas in lacinia felis. Sed vitae dui in dui consequat, ultrices mauris. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales.`,
+    content: `
+      <p>Design is more than just aesthetics—it's about creating meaningful connections between users and digital experiences. In today's rapidly evolving digital landscape, designers play a crucial role in shaping how people interact with technology and each other.</p>
+      
+      <h2>The Evolution of Design Thinking</h2>
+      <p>Over the past decade, we've witnessed a fundamental shift in how we approach design. What once was purely visual has transformed into a discipline that encompasses psychology, technology, and human behavior. Modern designers are not just creators; they are problem solvers, strategists, and advocates for user experience.</p>
+      
+      <p>This evolution has brought new challenges and opportunities. Designers must now consider accessibility, sustainability, and ethical implications of their work. They need to understand data analytics, user research methodologies, and emerging technologies like AI and machine learning.</p>
+      
+      <h3>Understanding User Needs</h3>
+      <p>At the heart of great design lies empathy. Successful designers spend considerable time understanding their users' pain points, motivations, and goals. This deep understanding allows them to create solutions that truly resonate with their audience.</p>
+      
+      <blockquote>
+        <p>"Design is not just what it looks like and feels like. Design is how it works." - Steve Jobs</p>
+      </blockquote>
+      
+      <p>User research has become an integral part of the design process. Through interviews, surveys, and usability testing, designers gather insights that inform their creative decisions. This data-driven approach ensures that design choices are based on real user needs rather than assumptions.</p>
+      
+      <h2>The Role of Technology in Modern Design</h2>
+      <p>Technology continues to reshape the design landscape. From AI-powered design tools to virtual and augmented reality experiences, designers have access to an unprecedented array of capabilities. These tools not only enhance productivity but also open up new possibilities for creative expression.</p>
+      
+      <p>However, with great power comes great responsibility. Designers must navigate the ethical implications of these technologies, ensuring that their creations promote inclusivity, privacy, and human well-being. The challenge lies in leveraging technology to enhance human experiences rather than replace human connections.</p>
+      
+      <h3>Collaboration and Communication</h3>
+      <p>Modern design is rarely a solo endeavor. Successful projects require close collaboration between designers, developers, product managers, and stakeholders. Effective communication skills have become as important as technical design abilities.</p>
+      
+      <p>Designers must be able to articulate their vision, justify their decisions, and adapt their work based on feedback. This collaborative approach leads to better outcomes and ensures that design solutions align with business objectives and user needs.</p>
+    `,
     author: 'Admin',
     publishedDate: 'November 15, 2023',
     readTime: '5 min read',
-    imageUrl: 'assets/images/blog/featured-post.jpg',
+    imageUrl: 'assets/images/food_platter.jpg',
     category: 'Design',
     isFeatured: true
   },
@@ -43,7 +65,7 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
     author: 'Admin',
     publishedDate: 'November 10, 2023',
     readTime: '3 min read',
-    imageUrl: 'assets/images/blog/post-1.jpg',
+    imageUrl: 'assets/images/pizza.png',
     category: 'Design',
     isFeatured: false
   },
@@ -55,7 +77,7 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
     author: 'Admin',
     publishedDate: 'November 8, 2023',
     readTime: '4 min read',
-    imageUrl: 'assets/images/blog/post-2.jpg',
+    imageUrl: 'assets/images/food_platter.jpg',
     category: 'Development',
     isFeatured: false
   },
@@ -67,7 +89,7 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
     author: 'Admin',
     publishedDate: 'November 5, 2023',
     readTime: '2 min read',
-    imageUrl: 'assets/images/blog/post-3.jpg',
+    imageUrl: 'assets/images/pizza.png',
     category: 'Tips',
     isFeatured: false
   },
@@ -79,7 +101,7 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
     author: 'Admin',
     publishedDate: 'November 3, 2023',
     readTime: '6 min read',
-    imageUrl: 'assets/images/blog/post-4.jpg',
+    imageUrl: 'assets/images/pizza.png',
     category: 'Design',
     isFeatured: false
   }

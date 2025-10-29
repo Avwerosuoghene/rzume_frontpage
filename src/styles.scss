@@ -72,11 +72,22 @@ a {
   color: $warning;
 }
 
-// Typography System - Mobile First Approach
 
-// H1 - Display/Hero headings
 h1 {
   @include font-display;
+  font-size: $font-size-3xl;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-4xl;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-6xl;
+  }
+}
+
+h2 {
+  @include font-heading;
   font-size: $font-size-2xl;
 
   @media (min-width: 600px) {
@@ -88,7 +99,7 @@ h1 {
   }
 }
 
-h2 {
+h3 {
   @include font-heading;
   font-size: $font-size-xl;
 
@@ -101,8 +112,7 @@ h2 {
   }
 }
 
-// H3 - Section headings
-h3 {
+h4 {
   @include font-heading;
   font-size: $font-size-lg;
 
@@ -115,17 +125,125 @@ h3 {
   }
 }
 
-// H4 - Subsection headings
-h4 {
+h5 {
   @include font-heading;
   font-size: $font-size-base;
 
   @media (min-width: 600px) {
-    font-size: $font-size-md;
+    font-size: $font-size-lg;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-xl;
+  }
+}
+
+h6 {
+  @include font-heading;
+  font-size: $font-size-sm;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-base;
   }
 
   @media (min-width: 950px) {
     font-size: $font-size-lg;
+  }
+}
+
+blockquote {
+  @include font-body;
+  font-size: $font-size-base;
+  font-style: italic;
+  color: $gray;
+  background-color: rgba($rzume-blue, 0.05);
+  border-radius: 8px;
+  padding: 16px 24px;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-md;
+    padding: 20px 28px;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-lg;
+    padding: 24px 32px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+ul, ol {
+  @include font-body;
+  font-size: $font-size-sm;
+  padding-left: 20px;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-base;
+    padding-left: 24px;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-base;
+  }
+
+  li {
+    line-height: 1.6;
+  }
+}
+
+// Strong and emphasis
+strong, b {
+  font-weight: $font-weight-semibold;
+  color: $black;
+}
+
+em, i {
+  font-style: italic;
+}
+
+// Code elements
+code {
+  @include font-body;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: $font-size-xs;
+  background-color: rgba($gray, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-sm;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-sm;
+  }
+}
+
+// Pre-formatted text
+pre {
+  @include font-body;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: $font-size-xs;
+  background-color: rgba($gray, 0.05);
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+
+  @media (min-width: 600px) {
+    font-size: $font-size-sm;
+    padding: 20px;
+  }
+
+  @media (min-width: 950px) {
+    font-size: $font-size-sm;
+  }
+
+  code {
+    background: none;
+    padding: 0;
   }
 }
 

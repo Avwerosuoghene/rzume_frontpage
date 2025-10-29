@@ -15,7 +15,7 @@ import {
   AUTH_URLS
 } from '../../core/models';
 import { MatButtonModule } from '@angular/material/button';
-import { ScrollHeaderHelper, HeaderTheme, ScrollHeaderConfig } from '../../core/helpers';
+import { ScrollHeaderHelper, HeaderTheme, ScrollHeaderConfig, NavigationHelper } from '../../core/helpers';
 
 @Component({
   selector: 'app-about',
@@ -81,13 +81,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
   }
 
   private setActiveNavigation(): void {
-    this.headerConfig = {
-      ...this.headerConfig,
-      navigationItems: this.headerConfig.navigationItems.map(item => ({
-        ...item,
-        isActive: item.route === '/about'
-      }))
-    };
+    this.headerConfig = NavigationHelper.setActiveNavigation(this.headerConfig, '/about');
   }
 
   navigateToSignUp(): void {

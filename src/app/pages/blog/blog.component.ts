@@ -8,6 +8,7 @@ import {
   HEADER_CONFIG,
   HeaderConfig
 } from '../../core/models';
+import { NavigationHelper } from '../../core/helpers';
 import {
   BlogPagePost,
   BLOG_PAGE_POSTS,
@@ -42,13 +43,7 @@ export class BlogComponent implements OnInit {
   }
 
   private setActiveNavigation(): void {
-    this.headerConfig = {
-      ...this.headerConfig,
-      navigationItems: this.headerConfig.navigationItems.map(item => ({
-        ...item,
-        isActive: item.route === '/blog'
-      }))
-    };
+    this.headerConfig = NavigationHelper.setActiveNavigation(this.headerConfig, '/blog');
   }
 
   loadPostAsFeatured(post: BlogPagePost): void {

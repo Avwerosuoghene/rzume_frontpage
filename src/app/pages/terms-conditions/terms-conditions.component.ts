@@ -7,6 +7,7 @@ import {
   HEADER_CONFIG,
   HeaderConfig
 } from '../../core/models';
+import { NavigationHelper } from '../../core/helpers';
 
 @Component({
   selector: 'app-terms-conditions',
@@ -29,12 +30,6 @@ export class TermsConditionsComponent implements OnInit {
   }
 
   private setActiveNavigation(): void {
-    this.headerConfig = {
-      ...this.headerConfig,
-      navigationItems: this.headerConfig.navigationItems.map(item => ({
-        ...item,
-        isActive: item.route === '/terms-conditions'
-      }))
-    };
+    this.headerConfig = NavigationHelper.setActiveNavigation(this.headerConfig, '/terms-conditions');
   }
 }

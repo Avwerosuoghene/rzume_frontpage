@@ -11,4 +11,6 @@ export interface HeaderConfig {
   navigationItems: NavigationItem[];
   loginText: string;
   signUpText: string;
+  loginUrl: string;
+  signUpUrl: string;
 }

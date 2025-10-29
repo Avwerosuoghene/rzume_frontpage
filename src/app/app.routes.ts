@@ -22,5 +22,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/blog/blog.component')
       .then(m => m.BlogComponent)
   },
+  {
+    path: 'terms-conditions',
+    loadComponent: () => import('./pages/terms-conditions/terms-conditions.component')
+      .then(m => m.TermsConditionsComponent)
+  },
   { path: '**', redirectTo: '' }
 ];

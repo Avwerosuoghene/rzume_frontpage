@@ -52,7 +52,7 @@
         <div class="newsletter-signup">
           <h4 class="newsletter-title">{{ newsletterData.title }}</h4>
           <p class="newsletter-description">{{ newsletterData.description }}</p>
-          <button mat-button class="rzume-button-secondary newsletter-button">
+          <button mat-button class="rzume-button-secondary newsletter-button" (click)="navigateToSignUp()">
             <span class="button-elements">{{ newsletterData.buttonText }}</span>
           </button>
         </div>

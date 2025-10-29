@@ -20,12 +20,13 @@
     </nav>
 
     <div class="header-actions">
-      <button mat-button class="rzume-button-outline-text header-button">
+      <button mat-button class="rzume-button-outline-text header-button" (click)="navigateToLogin()">
         <span class="button-elements">{{ headerConfig.loginText }}</span>
       </button>
       <button 
         mat-button 
         [class]="!isDark ? 'rzume-button-primary header-button' : 'rzume-button-secondary header-button'"
+        (click)="navigateToSignUp()"
       >
         <span class="button-elements">{{ headerConfig.signUpText }}</span>
       </button>

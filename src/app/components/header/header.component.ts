@@ -24,4 +24,12 @@ export class HeaderComponent  {
   closeMenu(): void {
     this.isMenuOpen = false;
   }
+
+  navigateToLogin(): void {
+    window.open(this.headerConfig.loginUrl, '_blank');
+  }
+
+  navigateToSignUp(): void {
+    window.open(this.headerConfig.signUpUrl, '_blank');
+  }
 }

@@ -11,7 +11,8 @@ import {
   ABOUT_HERO, 
   HEADER_CONFIG,
   HeroSection,
-  HeaderConfig
+  HeaderConfig,
+  AUTH_URLS
 } from '../../core/models';
 import { MatButtonModule } from '@angular/material/button';
 import { ScrollHeaderHelper, HeaderTheme, ScrollHeaderConfig } from '../../core/helpers';
@@ -87,5 +88,9 @@ export class AboutComponent implements OnInit, AfterViewInit {
         isActive: item.route === '/about'
       }))
     };
+  }
+
+  navigateToSignUp(): void {
+    window.open(AUTH_URLS.registerUrl, '_blank');
   }
 }

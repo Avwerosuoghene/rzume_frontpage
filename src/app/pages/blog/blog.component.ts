@@ -3,17 +3,18 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { MatButtonModule } from '@angular/material/button';
-import { 
+import {
+  AUTH_URLS,
   HEADER_CONFIG,
   HeaderConfig
 } from '../../core/models';
-import { 
-  BlogPagePost, 
-  BLOG_PAGE_POSTS, 
-  FEATURED_POST, 
-  POPULAR_POSTS, 
+import {
+  BlogPagePost,
+  BLOG_PAGE_POSTS,
+  FEATURED_POST,
+  POPULAR_POSTS,
   NEWSLETTER_SIGNUP,
-  NewsletterSignup 
+  NewsletterSignup
 } from '../../core/models/mocks';
 
 @Component({
@@ -52,15 +53,19 @@ export class BlogComponent implements OnInit {
 
   loadPostAsFeatured(post: BlogPagePost): void {
     this.featuredPost = post;
-    
+
     this.updatePopularPosts(post);
-    
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   private updatePopularPosts(newFeaturedPost: BlogPagePost): void {
     const allOtherPosts = BLOG_PAGE_POSTS.filter(post => post.id !== newFeaturedPost.id);
-    
+
     this.popularPosts = allOtherPosts.slice(0, 4);
+  }
+
+  navigateToSignUp(): void {
+    window.open(AUTH_URLS.registerUrl, '_blank');
   }
 }

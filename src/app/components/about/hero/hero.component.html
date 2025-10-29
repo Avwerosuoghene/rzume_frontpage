@@ -11,10 +11,10 @@
     </div>
     
     <div class="hero-actions" *ngIf="showButtons">
-      <button mat-button class="rzume-button-secondary">
+      <button mat-button class="rzume-button-secondary" (click)="navigateToSignUp()">
         <span class="button-elements">{{ heroData.primaryButtonText }}</span>
       </button>
-      <button mat-button class="rzume-button-outline">
+      <button mat-button class="rzume-button-outline" (click)="navigateToNewsletter()">
         <span class="button-elements">{{ heroData.secondaryButtonText }}</span>
       </button>
     </div>

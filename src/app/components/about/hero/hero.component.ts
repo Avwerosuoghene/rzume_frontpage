@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeroSection } from '../../../core/models';
+import { HeroSection, AUTH_URLS } from '../../../core/models';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -13,4 +13,15 @@ export class HeroComponent {
   @Input() heroData!: HeroSection;
   @Input() showButtons: boolean = true;
   @Input() isDark: boolean = true;
+
+  navigateToSignUp(): void {
+    window.open(AUTH_URLS.registerUrl, '_blank');
+  }
+
+  navigateToNewsletter(): void {
+    const newsletterSection = document.querySelector('.newsletter-section');
+    if (newsletterSection) {
+      newsletterSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }

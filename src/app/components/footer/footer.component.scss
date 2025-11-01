@@ -32,10 +32,19 @@
   }
 
   .footer-brand {
-    width: 195px;
+    width: 8px;
     display: flex;
     align-items: center;
     gap: 12px;
+    width: 120px;
+
+    .author-avatar {
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      width: 200px;
+    }
   }
 
   .footer-newsletter {
@@ -131,9 +140,10 @@
     top: 20px;
     right: 20px;
     z-index: 1;
-    opacity: 0.3;
+    display: none;
 
     @media (min-width: 768px) {
+      display: block;
       width: 250px;
       top: 30px;
       right: 30px;

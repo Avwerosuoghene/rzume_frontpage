@@ -3,8 +3,8 @@ import { AUTH_URLS } from './auth.constants';
 
 export const NAVIGATION_ITEMS: NavigationItem[] = [
   { id: 'about', label: 'About', route: '/about' },
-  { id: 'features', label: 'Features', route: '/features' },
-  { id: 'faq', label: 'FAQ', route: '/faq' },
+//   { id: 'features', label: 'Features', route: '/features' },
+//   { id: 'faq', label: 'FAQ', route: '/faq' },
   { id: 'blog', label: 'Blog', route: '/blog' },
   { id: 'terms', label: 'Terms', route: '/terms-conditions' }
 ];

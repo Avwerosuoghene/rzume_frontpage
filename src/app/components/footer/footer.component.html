@@ -8,12 +8,19 @@
 
         <div class="footer-newsletter">
           <h3 class="newsletter-title">Get job search tips and product updates</h3>
-          <div class="newsletter-form">
-            <input type="email" placeholder="Enter your email" class="newsletter-input" />
-            <button mat-button class="rzume-button-secondary ">
+          <form class="newsletter-form" (ngSubmit)="onSubscribe()">
+            <input 
+              type="email" 
+              id="newsletter-email"
+              name="email"
+              placeholder="Enter your email" 
+              class="newsletter-input"
+              [(ngModel)]="emailValue"
+              required />
+            <button mat-button type="submit" class="rzume-button-secondary">
               <span class="button-elements">Subscribe</span>
             </button>
-          </div>
+          </form>
         </div>
       </div>
 

@@ -2,6 +2,29 @@
 @import '../../styles/fonts.scss';
 @import '../../styles/general_styles.scss';
 
+// Animation keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .blog-page-container {
   min-height: 100vh;
   background-color: $white;
@@ -60,6 +83,12 @@
   @media (min-width: 769px) {
     gap: 40px;
   }
+
+  .hero-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.2s ease-out 0.3s forwards;
+  }
 }
 
 .hero-meta {
@@ -67,6 +96,9 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 4px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out 0.6s forwards;
 
   @media (min-width: 481px) {
     flex-wrap: nowrap;
@@ -86,6 +118,9 @@
   width: 100%;
   overflow: hidden;
   height: 300px;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeInScale 1.2s ease-out 0.9s forwards;
 
   @media (min-width: 769px) {
     height: 500px;
@@ -98,8 +133,10 @@
   }
 }
 
-// Styles for innerHTML content - using ::ng-deep to penetrate view encapsulation
 .article-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out 1.2s forwards;
   ::ng-deep {
     p {
       margin-bottom: 16px;
@@ -207,6 +244,9 @@
 
   .sidebar-title {
     color: $gray;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 1.2s forwards;
   }
 }
 
@@ -223,6 +263,13 @@
   border-bottom: 1px solid $gray;
   transition: all 0.3s ease;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+
+  &:nth-child(1) { animation-delay: 1.5s; }
+  &:nth-child(2) { animation-delay: 1.7s; }
+  &:nth-child(3) { animation-delay: 1.9s; }
 
   &:hover {
     background-color: rgba($rzume-blue, 0.05);
@@ -261,6 +308,9 @@
   color: $white;
   gap: 20px;
   border-radius: 10px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-out 2.2s forwards;
 
   @media (min-width: 769px) {
     padding: 32px;

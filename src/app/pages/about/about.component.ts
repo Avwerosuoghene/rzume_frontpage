@@ -15,7 +15,7 @@ import {
   AUTH_URLS
 } from '../../core/models';
 import { MatButtonModule } from '@angular/material/button';
-import { ScrollHeaderHelper, HeaderTheme, ScrollHeaderConfig, NavigationHelper, ImageOptimizationHelper } from '../../core/helpers';
+import { ScrollHeaderHelper, HeaderTheme, ScrollHeaderConfig, NavigationHelper } from '../../core/helpers';
 import { AnimationService } from '../../core/services';
 
 @Component({
@@ -53,8 +53,6 @@ export class AboutComponent implements OnInit, AfterViewInit {
   @ViewChild('heroSection', { static: false }) heroSection!: ElementRef;
   @ViewChild('ctaSection', { static: false }) ctaSection!: ElementRef;
 
-  ctaImageLoaded = false;
-
   constructor(private animationService: AnimationService) {
     this.scrollHelper = new ScrollHeaderHelper(this.scrollConfig);
   }
@@ -81,25 +79,13 @@ export class AboutComponent implements OnInit, AfterViewInit {
     
     setTimeout(() => {
       this.scrollHelper.checkScrollPosition();
-      this.initializeCTALazyLoading();
+      this.initializeCTAScrollAnimation();
     }, AboutComponent.DOM_READY_DELAY_MS);
   }
 
-  private initializeCTALazyLoading(): void {
+  private initializeCTAScrollAnimation(): void {
     if (this.ctaSection) {
-      ImageOptimizationHelper.initBackgroundLazyLoad(
-        this.ctaSection.nativeElement,
-        '/assets/images/smiling-lady.jpg',
-        {
-          onLoad: () => {
-            this.ctaImageLoaded = true;
-            this.animationService.initCTAScrollAnimation(this.ctaSection.nativeElement);
-          },
-          onError: () => {
-            this.ctaImageLoaded = true;
-          }
-        }
-      );
+      this.animationService.initCTAScrollAnimation(this.ctaSection.nativeElement);
     }
   }
 

@@ -10,5 +10,5 @@
   },
   "include": [
     "src/**/*.ts"
-  ]
+, "system-architecture/image-optimization.examples.ts"  ]
 }

@@ -8,6 +8,7 @@
     <div class="features-grid">
       @for (card of featureCards; track card.id) {
         <div 
+          #featureCard
           class="feature-card"
           [class.light-blue]="card.backgroundColor === 'light-blue'"
           [class.blue]="card.backgroundColor === 'blue'"

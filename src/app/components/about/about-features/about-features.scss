@@ -1,6 +1,51 @@
 @import '../../../styles/theme.scss';
 @import '../../../styles/fonts.scss';
 
+// Animation keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .about-features-section {
   padding: 20px 16px 20px;
   background-color: $white;
@@ -21,6 +66,9 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s ease-out 0.5s forwards;
 
   @media (min-width: 768px) {
     margin-bottom: 60px;
@@ -48,10 +96,58 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  opacity: 1; // Show by default
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity;
+
+  // Initial hidden state for animation
+  &.animate-ready {
+    opacity: 0;
+    transform: translateY(30px);
+
+    @media (max-width: 767px) {
+      &:nth-child(odd) {
+        transform: translateX(-40px);
+      }
+      
+      &:nth-child(even) {
+        transform: translateX(40px);
+      }
+    }
+  }
 
   @media (min-width: 768px) {
     padding: 40px;
     height: 250px;
+    
+    // Desktop: fade in up animation
+    &.animate-in {
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    
+    // Desktop hover effect
+    &:hover {
+      transform: scale(1.03) translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // Mobile: slide in animations
+  @media (max-width: 767px) {
+    &.animate-in {
+      &:nth-child(odd) {
+        animation: slideInLeft 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+      
+      &:nth-child(even) {
+        animation: slideInRight 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+    }
+    
+    // Mobile hover effect (subtle)
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 
   &.light-blue {
@@ -78,6 +174,15 @@
 
 .feature-title {
   color: $rzume-blue;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out 1s forwards;
+}
+
+.feature-description {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out 1.3s forwards;
 }
 
 .feature-image {
@@ -85,4 +190,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 16px;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: fadeInScale 1.2s ease-out 1.5s forwards;
 }

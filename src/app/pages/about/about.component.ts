@@ -16,6 +16,7 @@ import {
 } from '../../core/models';
 import { MatButtonModule } from '@angular/material/button';
 import { ScrollHeaderHelper, HeaderTheme, ScrollHeaderConfig, NavigationHelper, ImageOptimizationHelper } from '../../core/helpers';
+import { AnimationService } from '../../core/services';
 
 @Component({
   selector: 'app-about',
@@ -54,7 +55,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
 
   ctaImageLoaded = false;
 
-  constructor() {
+  constructor(private animationService: AnimationService) {
     this.scrollHelper = new ScrollHeaderHelper(this.scrollConfig);
   }
 
@@ -92,6 +93,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
         {
           onLoad: () => {
             this.ctaImageLoaded = true;
+            this.animationService.initCTAScrollAnimation(this.ctaSection.nativeElement);
           },
           onError: () => {
             this.ctaImageLoaded = true;

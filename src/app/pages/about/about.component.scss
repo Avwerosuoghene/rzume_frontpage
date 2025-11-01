@@ -2,6 +2,12 @@
 @import '../../styles/general_styles.scss';
 @import '../../styles/fonts.scss';
 
+// Loading animation
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .about-page {
   min-height: 100vh;
 }
@@ -30,7 +36,6 @@
 .cta-section {
   position: relative;
   min-height: 370px;
-  background-image: url('/assets/images/smiling-lady.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -38,6 +43,31 @@
   align-items: center;
   justify-content: center;
   border-radius: 14px;
+  
+  /* Lazy load background image - use original for now */
+  &.loaded {
+    background-image: url('/assets/images/smiling-lady.jpg');
+  }
+  
+  /* Loading state */
+  &:not(.loaded) {
+    background-color: #f3f4f6;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      margin: -20px 0 0 -20px;
+      border: 3px solid #e5e7eb;
+      border-top-color: #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+  
   margin: 0 16px 16px;
   overflow: hidden;
 

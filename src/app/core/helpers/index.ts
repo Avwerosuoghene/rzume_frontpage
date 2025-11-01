@@ -1,3 +1,4 @@
 export * from './carousel.helper';
 export * from './scroll-header.helper';
 export * from './navigation.helper';
+export * from './image-optimization.helper';

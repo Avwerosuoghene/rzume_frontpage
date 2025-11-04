@@ -50,12 +50,13 @@
   align-items: center;
   justify-content: center;
   border-radius: 14px;
-  margin: 0 16px 16px;
+  margin: 0 auto 16px;
   overflow: hidden;
+  max-width: 1200px;
 
   @media (min-width: 768px) {
     min-height: 470px;
-    margin: 0 95px 60px ;
+    margin: 0 auto 60px ;
     border-radius: 20px;
   }
 

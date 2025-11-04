@@ -3,22 +3,30 @@
 @import '../../styles/general_styles.scss';
 
 .footer-container {
+    background: $rzume-blue;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.footer-section {
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
   align-items: start;
-  background: $rzume-blue;
   padding: 40px 16px;
-  overflow: hidden; // Ensure decal stays within blue background
-  min-height: 200px; // Minimum height to accommodate decal
+  overflow: hidden; 
+  min-height: 200px; 
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr auto;
     gap: 60px;
     align-items: center;
     padding: 60px 95px;
-    min-height: 250px; // Larger minimum height for desktop
+    min-height: 250px;
   }
 
   .footer-left {

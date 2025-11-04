@@ -49,6 +49,7 @@
 .about-features-section {
   padding: 20px 16px 20px;
   background-color: $white;
+  margin: 0 auto;
 
   @media (min-width: 768px) {
     padding: 75px 95px 163px;
@@ -58,7 +59,8 @@
 .container {
   width: 100%;
   margin: 0 auto;
-
+  max-width: 100%;
+  max-width: 1200px;
 }
 
 .section-header {
@@ -109,7 +111,7 @@
       &:nth-child(odd) {
         transform: translateX(-40px);
       }
-      
+
       &:nth-child(even) {
         transform: translateX(40px);
       }
@@ -119,12 +121,12 @@
   @media (min-width: 768px) {
     padding: 40px;
     height: 250px;
-    
+
     // Desktop: fade in up animation
     &.animate-in {
       animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
-    
+
     // Desktop hover effect
     &:hover {
       transform: scale(1.03) translateY(-5px);
@@ -138,12 +140,12 @@
       &:nth-child(odd) {
         animation: slideInLeft 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
       }
-      
+
       &:nth-child(even) {
         animation: slideInRight 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
       }
     }
-    
+
     // Mobile hover effect (subtle)
     &:hover {
       transform: scale(1.01);

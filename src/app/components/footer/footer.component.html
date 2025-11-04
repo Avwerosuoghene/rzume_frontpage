@@ -1,41 +1,42 @@
-<footer class="footer-container">
+<div class="footer-container">
+<footer class="footer-section">
+  <div class="footer-left">
+    <div class="footer-brand">
+      <img src="assets/icons/rzume_logo_white_v2.svg" alt="rzume logo" class="author-avatar" />
+    </div>
 
+    <div class="footer-newsletter">
+      <h3 class="newsletter-title">Get job search tips and product updates</h3>
+      <form class="newsletter-form" (ngSubmit)="onSubscribe()">
+        <input
+          type="email"
+          id="newsletter-email"
+          name="email"
+          placeholder="Enter your email"
+          class="newsletter-input"
+          [(ngModel)]="emailValue"
+          required
+        />
+        <button mat-button type="submit" class="rzume-button-secondary">
+          <span class="button-elements">Subscribe</span>
+        </button>
+      </form>
+    </div>
+  </div>
 
-      <div class="footer-left">
-        <div class="footer-brand">
-          <img src="assets/icons/rzume_logo_white_v2.svg" alt="rzume logo" class="author-avatar" />
-        </div>
+  <div class="footer-right">
+    <nav class="footer-nav">
+      @for (link of footerLinks; track link.route) {
+      <a [routerLink]="link.route" class="footer-link">
+        {{ link.label }}
+      </a>
+      }
+    </nav>
+  </div>
 
-        <div class="footer-newsletter">
-          <h3 class="newsletter-title">Get job search tips and product updates</h3>
-          <form class="newsletter-form" (ngSubmit)="onSubscribe()">
-            <input 
-              type="email" 
-              id="newsletter-email"
-              name="email"
-              placeholder="Enter your email" 
-              class="newsletter-input"
-              [(ngModel)]="emailValue"
-              required />
-            <button mat-button type="submit" class="rzume-button-secondary">
-              <span class="button-elements">Subscribe</span>
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <div class="footer-right">
-        <nav class="footer-nav">
-          @for (link of footerLinks; track link.route) {
-            <a [routerLink]="link.route" class="footer-link">
-              {{ link.label }}
-            </a>
-          }
-        </nav>
-      </div>
-
-      <div class="footer-decal">
-        <img src="assets/icons/rzume-decal.svg" alt="rzume decal">
-      </div>
-
+  <div class="footer-decal">
+    <img src="assets/icons/rzume-decal.svg" alt="rzume decal" />
+  </div>
 </footer>
+</div>
+

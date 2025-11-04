@@ -66,9 +66,6 @@
 }
 
 .hero-subtitle {
-  color: $gray;
-  font-size: 16px;
-  line-height: 1.6;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s ease-out 0.6s forwards;
@@ -117,21 +114,12 @@
   margin: 0;
 }
 
-.terms-text {
-  color: $gray;
-  line-height: 1.7;
-  margin: 0;
-}
 
 .terms-list {
-  color: $black;
-  line-height: 1.7;
-  margin: 0;
   padding-left: 20px;
 
   li {
     margin-bottom: 8px;
-    color: $gray;
 
     &:last-child {
       margin-bottom: 0;

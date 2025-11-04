@@ -24,7 +24,10 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/sitemap.xml",
+              "src/robots.txt",
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"

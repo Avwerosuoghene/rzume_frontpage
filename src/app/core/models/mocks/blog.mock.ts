@@ -13,7 +13,6 @@ export interface BlogPagePost {
 
 export interface NewsletterSignup {
   title: string;
-  subtitle: string;
   description: string;
   buttonText: string;
 }
@@ -108,9 +107,8 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
 ];
 
 export const NEWSLETTER_SIGNUP: NewsletterSignup = {
-  title: 'Get More Done Together With Us',
-  subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et rhoncus mi.',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et rhoncus mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris.',
+  title: 'Organize your job hunt once and for all',
+  description: 'If your job search feels scattered or overwhelming, it’s time to try a tool designed specifically for you.',
   buttonText: 'Get Started'
 };
 

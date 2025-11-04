@@ -1,0 +1,117 @@
+@import '../../styles/theme.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/general_styles.scss';
+
+#customForm {
+  width: 100%;
+  max-width: 500px;
+}
+
+.SIGNUP_FLD {
+  margin-bottom: 12px;
+  
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  @media (min-width: 480px) {
+    display: inline-block;
+    margin-bottom: 0;
+    
+    &:first-of-type {
+      margin-right: 16px;
+      flex: 1;
+    }
+  }
+}
+
+// Style the email input to match footer design
+input[name="CONTACT_EMAIL"] {
+  width: 100%;
+  height: 48px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: $white;
+  @include font-body;
+  
+  @media (min-width: 480px) {
+    width: 300px;
+  }
+  
+  @media (min-width: 768px) {
+    padding: 16px 20px;
+  }
+  
+  &::placeholder {
+    color: #9ca3af;
+  }
+  
+  &:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+  }
+}
+
+input[type="submit"], #zcWebOptin {
+  height: 48px;
+  padding: 14px 24px;
+  background-color: $white;
+  color: $rzume-blue;
+  border: 2px solid $white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  @include font-body;
+  font-weight: $font-weight-semibold;
+  font-size: 16px;
+  min-width: 120px;
+  
+  @media (min-width: 768px) {
+    padding: 16px 28px;
+    min-width: 140px;
+  }
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  &:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+  }
+}
+
+@media (min-width: 480px) {
+  #zcampaignOptinForm {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    
+    .SIGNUP_FLD:first-of-type {
+      flex: 1;
+    }
+  }
+}
+
+#errorMsgDiv {
+  display: none;
+}
+
+#zcOptinSuccessPopup {
+  @media (max-width: 768px) {
+    width: 90% !important;
+    left: 5% !important;
+    top: 50px !important;
+    height: auto !important;
+  }
+}
+
+#zcOptinOverLay {
+  @media (max-width: 768px) {
+    height: 100vh !important;
+  }
+}

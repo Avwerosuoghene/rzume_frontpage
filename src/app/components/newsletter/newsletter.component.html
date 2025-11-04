@@ -1,0 +1,152 @@
+<div id="customForm">
+  <div class="quick_form_8_css" name="SIGNUP_BODY">
+    <div>
+      <div id="SIGNUP_HEADING"></div>
+
+      <div style="position:relative;">
+        <div
+          id="Zc_SignupSuccess"
+          style="
+            display: none;
+            position: absolute;
+            margin-left: 4%;
+            width: 90%;
+            background-color: white;
+            padding: 3px;
+            border: 3px solid rgb(194, 225, 154);
+            margin-top: 10px;
+            margin-bottom: 10px;
+            word-break: break-all;
+          "
+        >
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+              <tr>
+                <td width="10%">
+                  <img
+                    class="successicon"
+                    src="https://zgnp-zngp.maillist-manage.com/images/challangeiconenable.jpg"
+                    align="absmiddle"
+                  />
+                </td>
+                <td>
+                  <span
+                    id="signupSuccessMsg"
+                    style="
+                      color: rgb(73, 140, 132);
+                      font-family: sans-serif;
+                      font-size: 14px;
+                      word-break: break-word;
+                    "
+                  >
+                    &nbsp;&nbsp;Thank you for Signing Up
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <form
+        method="POST"
+        id="zcampaignOptinForm"
+        action="https://zgnp-zngp.maillist-manage.com/weboptin.zc"
+        target="_zcSignup"
+        (submit)="zcScptlessSubmit($event)"
+      >
+        <div id="errorMsgDiv">Please correct the marked field(s) below.</div>
+
+        <div class="SIGNUP_FLD">
+          <input
+            type="text"
+            placeholder="Enter your email"
+            name="CONTACT_EMAIL"
+            id="EMBED_FORM_EMAIL_LABEL"
+            required
+          />
+        </div>
+
+        <div class="SIGNUP_FLD">
+          <button
+            type="submit"
+            name="SIGNUP_SUBMIT_BUTTON"
+            id="zcWebOptin"
+            class="rzume-button-secondary"
+          >
+            <span class="button-elements">Subscribe</span>
+          </button>
+        </div>
+
+        <!-- Hidden fields -->
+        <input type="hidden" id="fieldBorder" value="" />
+        <input type="hidden" id="submitType" name="submitType" value="optinCustomView" />
+        <input type="hidden" id="emailReportId" name="emailReportId" value="" />
+        <input type="hidden" id="formType" name="formType" value="QuickForm" />
+        <input type="hidden" name="zx" id="cmpZuid" value="135c9c79d" />
+        <input type="hidden" name="zcvers" value="3.0" />
+        <input type="hidden" name="oldListIds" id="allCheckedListIds" value="" />
+        <input type="hidden" id="mode" name="mode" value="OptinCreateView" />
+        <input type="hidden" id="zcld" name="zcld" value="115a9a7940287f12b" />
+        <input type="hidden" id="zctd" name="zctd" value="115a9a7940287ef79" />
+        <input type="hidden" id="document_domain" value="" />
+        <input type="hidden" id="zc_Url" value="zgnp-zngp.maillist-manage.com" />
+        <input type="hidden" id="new_optin_response_in" value="0" />
+        <input type="hidden" id="duplicate_optin_response_in" value="0" />
+        <input type="hidden" name="zc_trackCode" id="zc_trackCode" value="ZCFORMVIEW" />
+        <input
+          type="hidden"
+          id="zc_formIx"
+          name="zc_formIx"
+          value="3zb0126a6395e2157285bc19782f3067b61f8637ea7f17366eb9d0e2d2e94ff5c7"
+        />
+        <input type="hidden" id="viewFrom" value="URL_ACTION" />
+        <input type="hidden" id="scriptless" name="scriptless" value="yes" />
+        <input type="hidden" id="zc_spmSubmit" name="zc_spmSubmit" value="ZCSPMSUBMIT" />
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  id="zcOptinOverLay"
+  style="
+    display: none;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.5;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    height: 988px;
+  "
+></div>
+
+<div
+  id="zcOptinSuccessPopup"
+  style="
+    display: none;
+    z-index: 9999;
+    width: 800px;
+    height: 40%;
+    top: 84px;
+    position: fixed;
+    left: 26%;
+    background-color: #ffffff;
+    border-color: #e6e6e6;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 10px #424242;
+    padding: 35px;
+  "
+>
+  <span
+    style="position: absolute; top: -16px; right: -14px; z-index: 99999; cursor: pointer;"
+    id="closeSuccess"
+  >
+    <img src="https://zgnp-zngp.maillist-manage.com/images/videoclose.png" />
+  </span>
+  <div id="zcOptinSuccessPanel"></div>
+</div>

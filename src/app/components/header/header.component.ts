@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { HeaderConfig } from '../../core/models';
 
@@ -16,8 +16,6 @@ export class HeaderComponent  {
   @Input() isDark: boolean = true;
   
   isMenuOpen = false;
-
-  constructor(private router: Router) {}
   
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
@@ -33,9 +31,5 @@ export class HeaderComponent  {
 
   navigateToSignUp(): void {
     window.open(this.headerConfig.signUpUrl, '_blank');
-  }
-
-  navigateToAbout(): void {
-    this.router.navigate(['/about']);
   }
 }

@@ -107,7 +107,9 @@
     gap: 8px;
   }
 
-  .author, .date, .read-time {
+  .author,
+  .date,
+  .read-time {
     color: $gray;
   }
 }
@@ -156,7 +158,12 @@
       }
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       margin-top: 32px;
       margin-bottom: 16px;
 
@@ -187,7 +194,8 @@
       }
     }
 
-    ul, ol {
+    ul,
+    ol {
       margin-bottom: 16px;
 
       @media (min-width: 600px) {
@@ -232,6 +240,110 @@
         border-bottom-color: $rzume-blue;
       }
     }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background-color: $white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+
+      @media (min-width: 600px) {
+        margin: 32px 0;
+      }
+
+      @media (min-width: 950px) {
+        margin: 40px 0;
+      }
+
+      thead {
+        background-color: #f8f9fa;
+
+        th {
+          padding: 16px 20px;
+          text-align: left;
+          font-weight: 600;
+          color: $black;
+          border-bottom: 2px solid #e9ecef;
+          font-size: 14px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+
+          @media (min-width: 600px) {
+            padding: 20px 24px;
+            font-size: 15px;
+          }
+
+          &:first-child {
+            border-top-left-radius: 8px;
+          }
+
+          &:last-child {
+            border-top-right-radius: 8px;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: #f8f9fa;
+          }
+
+          &:nth-child(even) {
+            background-color: #fafbfc;
+
+            &:hover {
+              background-color: #f1f3f4;
+            }
+          }
+
+          &:last-child {
+            td:first-child {
+              border-bottom-left-radius: 8px;
+            }
+
+            td:last-child {
+              border-bottom-right-radius: 8px;
+            }
+          }
+        }
+
+        td {
+          padding: 16px 20px;
+          border-bottom: 1px solid #e9ecef;
+          color: $gray;
+          line-height: 1.5;
+
+          @media (min-width: 600px) {
+            padding: 18px 24px;
+          }
+
+          &:first-child {
+            font-weight: 500;
+            color: $black;
+          }
+
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+
+      // Mobile responsiveness
+      @media (max-width: 600px) {
+        font-size: 14px;
+
+        th,
+        td {
+          padding: 12px 16px;
+        }
+      }
+    }
   }
 }
 
@@ -252,7 +364,6 @@
   }
 }
 
-
 .popular-posts-list {
   display: flex;
   flex-direction: column;
@@ -269,9 +380,15 @@
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease-out forwards;
 
-  &:nth-child(1) { animation-delay: 1.5s; }
-  &:nth-child(2) { animation-delay: 1.7s; }
-  &:nth-child(3) { animation-delay: 1.9s; }
+  &:nth-child(1) {
+    animation-delay: 1.5s;
+  }
+  &:nth-child(2) {
+    animation-delay: 1.7s;
+  }
+  &:nth-child(3) {
+    animation-delay: 1.9s;
+  }
 
   &:hover {
     background-color: rgba($rzume-blue, 0.05);
@@ -297,7 +414,6 @@
   min-width: 0;
 }
 
-
 .newsletter-signup {
   display: flex;
   flex-direction: column;
@@ -308,7 +424,6 @@
   padding: 24px;
   text-align: center;
   color: $white;
-  gap: 20px;
   border-radius: 10px;
   opacity: 0;
   transform: translateY(30px);
@@ -316,21 +431,22 @@
 
   @media (min-width: 769px) {
     padding: 32px;
-    gap: 40px;
   }
 }
 
 .newsletter-title {
   color: $white;
+  margin-bottom: 20px;
+  @media (min-width: 769px) {
+    margin-bottom: 30px;
+  }
 }
-
 
 .newsletter-button {
-    max-width: 140px;
-    margin-top: 10px;
+  max-width: 140px;
+  margin-top: 10px;
 
-    @media (min-width: 769px) { 
-        margin-top: 40px;
-    }
+  @media (min-width: 769px) {
+    margin-top: 40px;
+  }
 }
-

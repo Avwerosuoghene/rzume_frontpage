@@ -81,6 +81,8 @@
     gap: 24px;
     justify-content: center;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
 
     @media (min-width: 768px) {
       gap: 32px;
@@ -96,6 +98,7 @@
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s ease;
+    cursor: pointer;
 
     @media (min-width: 768px) {
       font-size: 16px;
@@ -112,8 +115,9 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 1;
+    z-index: 0;
     display: none;
+    pointer-events: none;
 
     @media (min-width: 768px) {
       display: block;

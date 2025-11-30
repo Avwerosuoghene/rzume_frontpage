@@ -30,7 +30,6 @@ export class TestimonialsComponent implements OnInit {
   };
   
   ngOnInit(): void {
-    // Register Swiper custom elements
     register();
   }
 }

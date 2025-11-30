@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { BlogPostComponent } from './blog-post/blog-post.component';
 import { 
   BlogSection, 
-  BlogPost, 
-  BLOG_POSTS, 
-  BLOG_SECTION 
+  BLOG_SECTION,
+  BLOG_PAGE_POSTS,
+  BlogPagePost
 } from '../../../core/models';
 
 @Component({
@@ -17,5 +17,5 @@ import {
 })
 export class BlogComponent {
   sectionData: BlogSection = BLOG_SECTION;
-  blogPosts: BlogPost[] = BLOG_POSTS;
+  blogPosts: BlogPagePost[] = BLOG_PAGE_POSTS;
 }

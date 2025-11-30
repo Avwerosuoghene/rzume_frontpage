@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { MatButtonModule } from '@angular/material/button';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   AUTH_URLS,
   HEADER_CONFIG,
@@ -38,8 +39,19 @@ export class BlogComponent implements OnInit {
 
   isHeaderDark: boolean = false;
 
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
   ngOnInit(): void {
     this.setActiveNavigation();
+    this.route.queryParams.subscribe(params => {
+      const postId = params['postId'];
+      if (postId) {
+        const targetPost = BLOG_PAGE_POSTS.find(post => post.id === postId);
+        if (targetPost) {
+          this.loadPostAsFeatured(targetPost);
+        }
+      }
+    });
   }
 
   private setActiveNavigation(): void {
@@ -52,6 +64,12 @@ export class BlogComponent implements OnInit {
     this.updatePopularPosts(post);
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { postId: post.id },
+      queryParamsHandling: 'merge'
+    });
   }
 
   private updatePopularPosts(newFeaturedPost: BlogPagePost): void {

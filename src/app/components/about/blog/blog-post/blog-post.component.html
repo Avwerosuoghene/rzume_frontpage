@@ -1,21 +1,19 @@
 <article class="blog-post-card">
   <div class="post-image-container">
-    <img [src]="post.imageSrc" [alt]="post.imageAlt" class="post-image" />
+    <img [src]="post.imageUrl" [alt]="post.title" class="post-image" />
     <div class="post-date-badge-container">
-        <p class="post-date-badge">{{ post.date }}</p>
+        <p class="post-date-badge">{{ post.publishedDate }}</p>
     </div>
   </div>
 
   <div class="post-content">
     <div class="post-meta">
-      <span class="comments-count">{{ post.commentsCount }} Comments</span>
-      <span class="meta-separator">•</span>
       <span class="post-author">by: {{ post.author }}</span>
     </div>
 
     <h3 class="post-title">{{ post.title }}</h3>
 
-    <a routerLink="/blog" class="read-more-link">
+    <a [routerLink]="['/blog']" [queryParams]="{ postId: post.id }" class="read-more-link">
       READ MORE
       <img src="assets/icons/arrow_icon.svg" alt="arrow icon">
     </a>

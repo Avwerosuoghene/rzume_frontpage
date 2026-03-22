@@ -259,6 +259,62 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
     imageUrl: 'assets/images/5 Evidence-Backed Habits of Job Seekers Who Get Hired Faster.png',
     category: 'Career Tips',
     isFeatured: false
+  },
+  {
+    id: '4',
+    title: 'The Psychology of the Follow-Up: Why "Applied" is Only Half the Battle',
+    content: `<p>You've spent hours tailoring your CV. You've double-checked your cover letter for typos. You hit "Submit" and feel that brief rush of accomplishment.</p>
+      
+      <p>Then, the silence starts.</p>
+      
+      <p>For most job seekers, the journey ends at the "Applied" button. We tell ourselves that the ball is in the recruiter's court and that if they're interested, they'll reach out. But in a 2026 job market saturated with AI-generated applications, "silence" isn't always a "no"—often, it's just a symptom of a cluttered inbox.</p>
+      
+      <p>At <strong>Rzume</strong>, we've analyzed the behavior of successful candidates, and the data is clear: The "Follow-Up" is the most underutilized tool in your professional arsenal.</p>
+
+      <h2>The "Rejection Anxiety" Barrier</h2>
+      <p>Why don't we follow up? It usually comes down to two psychological barriers:</p>
+      
+      <p>1. <strong>Fear of being "annoying":</strong> We worry that checking in will make us seem desperate.</p>
+      
+      <p>2. <strong>Organization fatigue:</strong> By the time a week has passed, we've applied to ten more jobs and forgotten exactly when or where we sent the first one.</p>
+
+      <h2>The 7-Day Rule: Science, Not Guesswork</h2>
+      <p>Studies in recruitment show that the "sweet spot" for a follow-up is exactly 7 to 10 days after your initial application. This is long enough to show you respect their internal process, but short enough to ensure your name is still recognizable.</p>
+      
+      <p>A polite follow-up does three things:</p>
+      <ul>
+        <li>It demonstrates <strong>proactive communication</strong>, a top-tier soft skill.</li>
+        <li>It moves your name to the top of the recruiter's email stack.</li>
+        <li>It confirms your genuine interest in that specific company, separating you from "bulk" applicants.</li>
+      </ul>
+
+      <h2>How Rzume Solves the Memory Gap</h2>
+      <p>Rzume was built specifically to eliminate "Organization Fatigue." We know that manual tracking feels like a chore, but it is the only way to gain high-level insights into your career trajectory.</p>
+      
+      <p>Our <strong>Smart Nudge</strong> system is the heartbeat of the platform. When you log an application on Rzume:</p>
+      
+       <ul>
+       <li><p><strong>The Clock Starts:</strong> The system monitors the date of your "Applied" status.</p></li>
+       <li><p><strong>The Nudge:</strong> If 7 days pass without you moving that job to "In Progress" or "Rejected," Rzume sends you an automated email reminder.</p></li>
+       <li><p><strong>The Action:</strong> You don't have to think; you just see the reminder, send your pre-written follow-up template, and stay in the game.</p></li>
+       </ul>
+
+      <h2>Beyond the Spreadsheet</h2>
+      <p>Spreadsheets are static; they tell you what you did. Rzume is dynamic; it tells you what to do. By linking your specific CV to each entry, you also ensure that when that recruiter finally does call you back after your follow-up, you know exactly which version of your professional story they are looking at.</p>
+
+      <h2>The Bottom Line</h2>
+      <p>We aren't just building a tracker—we are building a habit. The habit of persistence.</p>
+      
+      <p>Don't let your dream job die in the "Applied" folder. Log in to rzume.site today, audit your current applications, and let our Smart Nudges turn your silence into a conversation.</p>
+      
+      <p><strong>Ready to stop ghosting your own career?</strong><br>
+      <a href="https://app.rzume.site" target="_blank" rel="noopener noreferrer">Sign up for Rzume for Free</a></p>`,
+    author: 'Rzume Team',
+    publishedDate: 'March 22, 2026',
+    readTime: '6 min read',
+    imageUrl: 'assets/images/The Psychology of the Follow-Up Why Applied is Only Half the Battle.png',
+    category: 'Job Search',
+    isFeatured: false
   }
 ];
 

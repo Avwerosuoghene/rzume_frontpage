@@ -3,8 +3,17 @@ FROM node:20-alpine AS build
 
 # Build arguments from GitHub Actions
 ARG GOOGLE_TAG_ID
+ARG LINKEDIN_PARTNER_ID
+ARG MIXPANEL_TOKEN
 ARG ANALYTICS_ENABLED=true
 ARG ANALYTICS_DEBUG=false
+
+# Set environment variables for script
+ENV GOOGLE_TAG_ID=${GOOGLE_TAG_ID}
+ENV LINKEDIN_PARTNER_ID=${LINKEDIN_PARTNER_ID}
+ENV MIXPANEL_TOKEN=${MIXPANEL_TOKEN}
+ENV ANALYTICS_ENABLED=${ANALYTICS_ENABLED}
+ENV ANALYTICS_DEBUG=${ANALYTICS_DEBUG}
 
 # Install bash for script execution
 RUN apk add --no-cache bash dos2unix
@@ -19,9 +28,6 @@ RUN npm install
 
 # Copy the rest of the application files
 COPY . .
-
-# Create assets/config directory
-RUN mkdir -p src/assets/config
 
 # Copy and run config generation script
 COPY scripts/create-config.sh ./create-config.sh

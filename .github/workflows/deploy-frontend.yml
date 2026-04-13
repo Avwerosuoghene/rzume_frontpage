@@ -45,6 +45,8 @@ jobs:
         run: |
           docker build \
             --build-arg GOOGLE_TAG_ID=${{ secrets.GOOGLE_TAG_ID }} \
+            --build-arg LINKEDIN_PARTNER_ID=${{ secrets.LINKEDIN_PARTNER_ID }} \
+            --build-arg MIXPANEL_TOKEN=${{ secrets.MIXPANEL_TOKEN }} \
             --build-arg ANALYTICS_ENABLED=${{ secrets.ANALYTICS_ENABLED }} \
             --build-arg ANALYTICS_DEBUG=${{ secrets.ANALYTICS_DEBUG }} \
             -t ${{ env.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }} .

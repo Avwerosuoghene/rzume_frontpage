@@ -1,3 +1,4 @@
+@use 'sass:color';
 @import './app/styles/theme.scss';
 @import './app/styles/fonts.scss';
 
@@ -370,7 +371,7 @@ pre {
   transform: translateY(0);
 
   &:hover:not(:focus):not(:read-only) {
-    border-color: darken($light-gray, 10%);
+    border-color: color.adjust($light-gray, $lightness: -10%);
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }

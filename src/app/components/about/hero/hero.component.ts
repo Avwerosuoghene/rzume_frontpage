@@ -1,8 +1,10 @@
-import { Component, Input, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, AfterViewInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeroSection, AUTH_URLS } from '../../../core/models';
+import { HeroSection, AUTH_URLS, ANALYTICS_LOCATIONS } from '../../../core/models';
 import { MatButtonModule } from '@angular/material/button';
 import { AnimationService } from '../../../core/services';
+import { AnalyticsEvent } from '../../../core/models/enums/analytics-events.enum';
+import { AnalyticsService } from '../../../core/services/analytics/analytics.service';
 
 @Component({
   selector: 'app-hero',
@@ -17,6 +19,8 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('heroSection') heroSection!: ElementRef<HTMLElement>;
   @ViewChild('heroImage') heroImage!: ElementRef<HTMLElement>;
+  
+  private analyticsService = inject(AnalyticsService);
 
   constructor(private animationService: AnimationService) {}
 
@@ -40,10 +44,19 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   }
 
   navigateToSignUp(): void {
+    this.analyticsService.track(AnalyticsEvent.SIGNUP_BUTTON_CLICKED, {
+      location: ANALYTICS_LOCATIONS.HERO,
+      button_text: this.heroData.primaryButtonText,
+      destination: AUTH_URLS.registerUrl
+    });
     window.open(AUTH_URLS.registerUrl, '_blank');
   }
 
   navigateToNewsletter(): void {
+    this.analyticsService.track(AnalyticsEvent.NEWSLETTER_BUTTON_CLICKED, {
+      location: ANALYTICS_LOCATIONS.HERO,
+      button_text: this.heroData.secondaryButtonText
+    });
     const newsletterSection = document.querySelector('.newsletter-section');
     if (newsletterSection) {
       newsletterSection.scrollIntoView({ behavior: 'smooth' });

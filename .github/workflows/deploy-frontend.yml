@@ -43,7 +43,11 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ${{ env.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }} .
+          docker build \
+            --build-arg GOOGLE_TAG_ID=${{ secrets.GOOGLE_TAG_ID }} \
+            --build-arg ANALYTICS_ENABLED=${{ secrets.ANALYTICS_ENABLED }} \
+            --build-arg ANALYTICS_DEBUG=${{ secrets.ANALYTICS_DEBUG }} \
+            -t ${{ env.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }} .
           docker push ${{ env.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
 
       - name: Deploy to Cloud Run

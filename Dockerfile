@@ -1,6 +1,14 @@
 # Stage 1: Build the Angular application
 FROM node:20-alpine AS build
 
+# Build arguments from GitHub Actions
+ARG GOOGLE_TAG_ID
+ARG ANALYTICS_ENABLED=true
+ARG ANALYTICS_DEBUG=false
+
+# Install bash for script execution
+RUN apk add --no-cache bash dos2unix
+
 WORKDIR /app
 
 # Copy package.json and package-lock.json
@@ -11,6 +19,15 @@ RUN npm install
 
 # Copy the rest of the application files
 COPY . .
+
+# Create assets/config directory
+RUN mkdir -p src/assets/config
+
+# Copy and run config generation script
+COPY scripts/create-config.sh ./create-config.sh
+RUN dos2unix /app/create-config.sh \
+  && chmod +x /app/create-config.sh \
+  && /app/create-config.sh
 
 # Build the application for production
 RUN npm run build -- --configuration production

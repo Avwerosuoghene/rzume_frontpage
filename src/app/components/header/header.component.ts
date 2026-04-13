@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { HeaderConfig } from '../../core/models';
+import { HeaderConfig, ANALYTICS_LOCATIONS } from '../../core/models';
+import { AnalyticsEvent } from '../../core/models/enums/analytics-events.enum';
+import { AnalyticsService } from '../../core/services/analytics/analytics.service';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +18,7 @@ export class HeaderComponent  {
   @Input() isDark: boolean = true;
   
   isMenuOpen = false;
+  private analyticsService = inject(AnalyticsService);
 
   constructor(private router: Router) {}
   
@@ -28,10 +31,18 @@ export class HeaderComponent  {
   }
 
   navigateToLogin(): void {
+    this.analyticsService.track(AnalyticsEvent.LOGIN_BUTTON_CLICKED, {
+      location: ANALYTICS_LOCATIONS.HEADER,
+      destination: this.headerConfig.loginUrl
+    });
     window.open(this.headerConfig.loginUrl, '_blank');
   }
 
   navigateToSignUp(): void {
+    this.analyticsService.track(AnalyticsEvent.SIGNUP_BUTTON_CLICKED, {
+      location: ANALYTICS_LOCATIONS.HEADER,
+      destination: this.headerConfig.signUpUrl
+    });
     window.open(this.headerConfig.signUpUrl, '_blank');
   }
 

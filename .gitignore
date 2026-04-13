@@ -44,4 +44,4 @@ testem.log
 Thumbs.db
 /system-architecture
 /src/assets/config
-
+public/assets/config/config.json

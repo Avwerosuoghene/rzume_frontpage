@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroComponent } from '../../components/about/hero/hero.component';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -12,11 +12,14 @@ import {
   HEADER_CONFIG,
   HeroSection,
   HeaderConfig,
-  AUTH_URLS
+  AUTH_URLS,
+  ANALYTICS_LOCATIONS
 } from '../../core/models';
 import { MatButtonModule } from '@angular/material/button';
 import { ScrollHeaderHelper, HeaderTheme, ScrollHeaderConfig, NavigationHelper } from '../../core/helpers';
 import { AnimationService } from '../../core/services';
+import { AnalyticsEvent } from '../../core/models/enums/analytics-events.enum';
+import { AnalyticsService } from '../../core/services/analytics/analytics.service';
 
 @Component({
   selector: 'app-about',
@@ -52,6 +55,8 @@ export class AboutComponent implements OnInit, AfterViewInit {
   
   @ViewChild('heroSection', { static: false }) heroSection!: ElementRef;
   @ViewChild('ctaSection', { static: false }) ctaSection!: ElementRef;
+  
+  private analyticsService = inject(AnalyticsService);
 
   constructor(private animationService: AnimationService) {
     this.scrollHelper = new ScrollHeaderHelper(this.scrollConfig);
@@ -94,6 +99,10 @@ export class AboutComponent implements OnInit, AfterViewInit {
   }
 
   navigateToSignUp(): void {
+    this.analyticsService.track(AnalyticsEvent.CTA_BUTTON_CLICKED, {
+      location: ANALYTICS_LOCATIONS.ABOUT_CTA_SECTION,
+      destination: AUTH_URLS.registerUrl
+    });
     window.open(AUTH_URLS.registerUrl, '_blank');
   }
 }

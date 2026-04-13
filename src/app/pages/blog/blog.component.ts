@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
@@ -7,9 +7,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {
   AUTH_URLS,
   HEADER_CONFIG,
-  HeaderConfig
+  HeaderConfig,
+  ANALYTICS_LOCATIONS
 } from '../../core/models';
 import { NavigationHelper } from '../../core/helpers';
+import { AnalyticsEvent } from '../../core/models/enums/analytics-events.enum';
+import { AnalyticsService } from '../../core/services/analytics/analytics.service';
 import {
   BlogPagePost,
   BLOG_PAGE_POSTS,
@@ -38,6 +41,7 @@ export class BlogComponent implements OnInit {
   newsletterData: NewsletterSignup = NEWSLETTER_SIGNUP;
 
   isHeaderDark: boolean = false;
+  private analyticsService = inject(AnalyticsService);
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
@@ -59,10 +63,14 @@ export class BlogComponent implements OnInit {
   }
 
   loadPostAsFeatured(post: BlogPagePost): void {
+    this.analyticsService.track(AnalyticsEvent.POPULAR_POST_CLICKED, {
+      post_id: post.id,
+      post_title: post.title,
+      location: ANALYTICS_LOCATIONS.BLOG_SIDEBAR
+    });
+    
     this.featuredPost = post;
-
     this.updatePopularPosts(post);
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     this.router.navigate([], {
@@ -79,6 +87,11 @@ export class BlogComponent implements OnInit {
   }
 
   navigateToSignUp(): void {
+    this.analyticsService.track(AnalyticsEvent.NEWSLETTER_BUTTON_CLICKED, {
+      location: ANALYTICS_LOCATIONS.BLOG_SIDEBAR,
+      button_text: this.newsletterData.buttonText,
+      destination: AUTH_URLS.registerUrl
+    });
     window.open(AUTH_URLS.registerUrl, '_blank');
   }
 }

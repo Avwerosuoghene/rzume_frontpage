@@ -14,12 +14,16 @@ export class NewsletterComponent {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     
+    const fullNameInput = form.querySelector('input[name="CONTACT_FULL_NAME"]') as HTMLInputElement;
     const emailInput = form.querySelector('input[name="CONTACT_EMAIL"]') as HTMLInputElement;
+    
+    const fullName = fullNameInput?.value || '';
     const email = emailInput?.value || '';
 
     this.analyticsService.track(AnalyticsEvent.NEWSLETTER_SUBMITTED, {
       location: ANALYTICS_LOCATIONS.FOOTER_NEWSLETTER,
-      email_domain: email.split('@')[1] || 'unknown'
+      email_domain: email.split('@')[1] || 'unknown',
+      has_name: !!fullName
     });
 
     const spmElement = form.querySelector('#zc_spmSubmit');

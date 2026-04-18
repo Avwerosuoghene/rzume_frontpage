@@ -3,9 +3,14 @@
 @import '../../styles/general_styles.scss';
 
 .footer-container {
-    background: $rzume-blue;
-    width: 100%;
-    margin: 0 auto;
+  background: $rzume-blue;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 16px;
+
+  @media (min-width: 768px) {
+    padding: 60px 95px;
+  }
 }
 
 .footer-section {
@@ -14,9 +19,9 @@
   grid-template-columns: 1fr;
   gap: 40px;
   align-items: start;
-  padding: 40px 16px;
-  overflow: hidden; 
-  min-height: 200px; 
+
+  overflow: hidden;
+  min-height: 200px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -25,7 +30,7 @@
     grid-template-columns: 1fr auto;
     gap: 60px;
     align-items: center;
-    padding: 60px 95px;
+
     min-height: 250px;
   }
 
@@ -56,17 +61,14 @@
   }
 
   .footer-newsletter {
-    max-width: 500px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-  }
 
-  .newsletter-title {
-    color: $white;
-    font-weight: $font-weight-regular;
+    @media (min-width: 768px) {
+      max-width: 800px;
+    }
   }
-
 
   .footer-right {
     width: 100%;

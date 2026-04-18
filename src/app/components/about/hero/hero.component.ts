@@ -70,6 +70,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
       width: '90%',
       maxWidth: '600px',
       panelClass: 'newsletter-modal-container',
+      backdropClass: 'newsletter-modal-backdrop',
       autoFocus: false,
       disableClose: false
     });

@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { AnimationService } from '../../../core/services';
 import { AnalyticsEvent } from '../../../core/models/enums/analytics-events.enum';
 import { AnalyticsService } from '../../../core/services/analytics/analytics.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NewsletterModalComponent } from '../../newsletter/newsletter-modal/newsletter-modal.component';
 
 @Component({
   selector: 'app-hero',
@@ -13,16 +15,18 @@ import { AnalyticsService } from '../../../core/services/analytics/analytics.ser
   styleUrl: './hero.component.scss'
 })
 export class HeroComponent implements AfterViewInit, OnDestroy {
+  private dialog = inject(MatDialog);
+
   @Input() heroData!: HeroSection;
   @Input() showButtons: boolean = true;
   @Input() isDark: boolean = true;
 
   @ViewChild('heroSection') heroSection!: ElementRef<HTMLElement>;
   @ViewChild('heroImage') heroImage!: ElementRef<HTMLElement>;
-  
+
   private analyticsService = inject(AnalyticsService);
 
-  constructor(private animationService: AnimationService) {}
+  constructor(private animationService: AnimationService) { }
 
   ngAfterViewInit(): void {
     this.initializeHeroAnimation();
@@ -57,9 +61,17 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
       location: ANALYTICS_LOCATIONS.HERO,
       button_text: this.heroData.secondaryButtonText
     });
-    const newsletterSection = document.querySelector('.newsletter-section');
-    if (newsletterSection) {
-      newsletterSection.scrollIntoView({ behavior: 'smooth' });
-    }
+
+    this.analyticsService.track(AnalyticsEvent.NEWSLETTER_MODAL_OPENED, {
+      location: ANALYTICS_LOCATIONS.HERO
+    });
+
+    this.dialog.open(NewsletterModalComponent, {
+      width: '90%',
+      maxWidth: '600px',
+      panelClass: 'newsletter-modal-container',
+      autoFocus: false,
+      disableClose: false
+    });
   }
 }

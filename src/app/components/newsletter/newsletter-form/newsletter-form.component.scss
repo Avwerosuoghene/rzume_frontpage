@@ -1,0 +1,87 @@
+@import '../../../styles/theme.scss';
+@import '../../../styles/fonts.scss';
+@import '../../../styles/general_styles.scss';
+
+// Form Container
+#zcampaignOptinForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  
+  @media (min-width: 768px) {
+    gap: 20px;
+  }
+}
+
+// Field Wrapper
+.newsletter-field {
+  width: 100%;
+  
+  &:last-of-type {
+    margin-top: 8px;
+    
+    @media (min-width: 768px) {
+      margin-top: 12px;
+    }
+  }
+}
+
+// Input Fields (First Name + Email)
+input[name="CONTACT_FIRST_NAME"],
+input[name="CONTACT_EMAIL"] {
+  width: 100%;
+  height: 48px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: #E5E7EB;
+  color: $black;
+  @include font-body;
+  transition: all 0.2s ease;
+  
+  @media (min-width: 768px) {
+    height: 52px;
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+  
+  &::placeholder {
+    color: #9CA3AF;
+  }
+  
+  &:focus {
+    outline: 2px solid $rzume-blue;
+    outline-offset: 2px;
+    background-color: #F3F4F6;
+  }
+  
+  &:hover {
+    background-color: #F3F4F6;
+  }
+}
+
+// Error Message (hidden by default)
+#errorMsgDiv {
+  display: none;
+  color: $warning;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+// Success/Popup Elements (keep existing responsive fixes)
+#zcOptinSuccessPopup {
+  @media (max-width: 768px) {
+    width: 90%;
+    left: 5%;
+    top: 50px;
+    height: auto;
+  }
+}
+
+#zcOptinOverLay {
+  @media (max-width: 768px) {
+    height: 100vh;
+  }
+}

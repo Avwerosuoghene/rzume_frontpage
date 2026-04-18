@@ -8,6 +8,7 @@ export const ANALYTICS_LOCATIONS = {
   
   // Hero section
   HERO: 'hero',
+  HERO_MODAL: 'hero_modal',
   
   // About page locations
   ABOUT_CTA_SECTION: 'about_cta_section',

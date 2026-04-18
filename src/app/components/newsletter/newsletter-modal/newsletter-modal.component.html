@@ -1,0 +1,30 @@
+<div class="newsletter-modal">
+  <h2 class="newsletter-modal__title">Hey you!</h2>
+  <p class="newsletter-modal__subtitle">
+    Be the first to get news updates, and tips about job applications
+  </p>
+  
+  <app-newsletter-form
+    #newsletterForm
+    [analyticsLocation]="analyticsLocation"
+    (submitted)="onSubmit()"
+  >
+    <div class="newsletter-modal__buttons">
+      <button 
+        class="newsletter-modal__button newsletter-modal__button--primary"
+        type="button"
+        (click)="newsletterForm.submitForm()"
+      >
+        Subscribe
+      </button>
+      
+      <button 
+        class="newsletter-modal__button newsletter-modal__button--secondary"
+        (click)="onDismiss()"
+        type="button"
+      >
+        Not Interested
+      </button>
+    </div>
+  </app-newsletter-form>
+</div>

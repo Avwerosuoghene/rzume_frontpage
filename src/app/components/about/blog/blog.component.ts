@@ -17,5 +17,7 @@ import {
 })
 export class BlogComponent {
   sectionData: BlogSection = BLOG_SECTION;
-  blogPosts: BlogPagePost[] = BLOG_PAGE_POSTS;
+  blogPosts: BlogPagePost[] = [...BLOG_PAGE_POSTS]
+    .sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime())
+    .slice(0, 3);
 }

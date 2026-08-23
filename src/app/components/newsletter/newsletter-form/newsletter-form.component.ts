@@ -1,8 +1,10 @@
-import { Component, Input, Output, EventEmitter, inject, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject, signal, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ANALYTICS_LOCATIONS, AnalyticsLocation } from '../../../core/models';
 import { AnalyticsEvent } from '../../../core/models/enums/analytics-events.enum';
 import { AnalyticsService } from '../../../core/services/analytics/analytics.service';
+
+type SubmitState = 'idle' | 'pending' | 'success' | 'error';
 
 @Component({
   selector: 'app-newsletter-form',
@@ -13,16 +15,21 @@ import { AnalyticsService } from '../../../core/services/analytics/analytics.ser
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewsletterFormComponent {
+  private static readonly RESPONSE_TIMEOUT_MS = 35000;
+
   @Input() buttonText = 'Subscribe';
   @Input() analyticsLocation: AnalyticsLocation = ANALYTICS_LOCATIONS.FOOTER_NEWSLETTER;
   @Input() showInlineLayout = false;
-  
+
   @Output() submitted = new EventEmitter<void>();
   @Output() error = new EventEmitter<string>();
-  
+
   @ViewChild('newsletterFormElement') formElement!: ElementRef<HTMLFormElement>;
-  
+
   private analyticsService = inject(AnalyticsService);
+
+  readonly submitState = signal<SubmitState>('idle');
+  protected readonly errorMessage = signal('');
 
   submitForm(): void {
     if (this.formElement?.nativeElement) {
@@ -30,13 +37,13 @@ export class NewsletterFormComponent {
     }
   }
 
-  protected zcScptlessSubmit(event: Event): void {
+  protected async zcScptlessSubmit(event: Event): Promise<void> {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
-    
+
     const firstNameInput = form.querySelector('input[name="CONTACT_FIRST_NAME"]') as HTMLInputElement;
     const emailInput = form.querySelector('input[name="CONTACT_EMAIL"]') as HTMLInputElement;
-    
+
     const firstName = firstNameInput?.value || '';
     const email = emailInput?.value || '';
 
@@ -46,12 +53,50 @@ export class NewsletterFormComponent {
       has_name: !!firstName
     });
 
-    const spmElement = form.querySelector('#zc_spmSubmit');
-    if (spmElement) spmElement.remove();
+    const formData = new FormData(form);
+    formData.delete('zc_spmSubmit');
 
-    form.submit();
-    this.submitted.emit();
-    
+    const params = new URLSearchParams();
+    formData.forEach((value, key) => {
+      if (typeof value === 'string') {
+        params.set(key, value);
+      }
+    });
+
     form.reset();
+    this.submitState.set('pending');
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), NewsletterFormComponent.RESPONSE_TIMEOUT_MS);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+        signal: controller.signal
+      });
+
+      if (!response.ok) {
+        throw new Error(`Zoho responded with status ${response.status}`);
+      }
+
+      this.submitState.set('success');
+      this.submitted.emit();
+    } catch (err) {
+      this.submitState.set('error');
+      this.errorMessage.set('Something went wrong submitting your signup. Please try again.');
+
+      this.analyticsService.track(AnalyticsEvent.NEWSLETTER_ERROR, {
+        location: this.analyticsLocation,
+        reason: err instanceof Error ? err.name : 'unknown'
+      });
+
+      this.error.emit(this.errorMessage());
+    } finally {
+      clearTimeout(timeoutId);
+    }
   }
 }

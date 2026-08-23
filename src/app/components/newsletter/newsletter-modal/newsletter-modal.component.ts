@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NewsletterFormComponent } from '../newsletter-form/newsletter-form.component';
@@ -14,17 +14,29 @@ import { ANALYTICS_LOCATIONS } from '../../../core/models';
   styleUrl: './newsletter-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NewsletterModalComponent {
-  private dialogRef = inject(MatDialogRef<NewsletterModalComponent>);
-  private analyticsService = inject(AnalyticsService);
-  
+export class NewsletterModalComponent implements OnDestroy {
+
+  private static readonly AUTO_CLOSE_DELAY_MS = 2000;
+
+  private readonly dialogRef = inject(MatDialogRef<NewsletterModalComponent>);
+  private readonly analyticsService = inject(AnalyticsService);
+
   protected readonly analyticsLocation = ANALYTICS_LOCATIONS.HERO_MODAL;
+
+  private autoCloseTimeoutId?: ReturnType<typeof setTimeout>;
 
   protected onSubmit(): void {
     this.analyticsService.track(AnalyticsEvent.NEWSLETTER_MODAL_SUBMITTED, {
       location: this.analyticsLocation
     });
-    this.dialogRef.close({ subscribed: true });
+    this.autoCloseTimeoutId = setTimeout(
+      () => this.dialogRef.close({ subscribed: true }),
+      NewsletterModalComponent.AUTO_CLOSE_DELAY_MS
+    );
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.autoCloseTimeoutId);
   }
 
   protected onDismiss(): void {

@@ -2,6 +2,7 @@
   <h3 class="newsletter-heading">Get job search tips and product updates</h3>
   
   <app-newsletter-form
+    #newsletterForm
     [analyticsLocation]="analyticsLocation"
   >
     <div class="newsletter-field">
@@ -10,8 +11,9 @@
         name="SIGNUP_SUBMIT_BUTTON"
         id="zcWebOptin"
         class="newsletter-submit"
+        [disabled]="newsletterForm.submitState() === 'pending'"
       >
-        Subscribe
+        {{ newsletterForm.submitState() === 'pending' ? 'Submitting…' : 'Subscribe' }}
       </button>
     </div>
   </app-newsletter-form>

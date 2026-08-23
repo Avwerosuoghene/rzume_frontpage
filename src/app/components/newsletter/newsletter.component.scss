@@ -65,4 +65,10 @@
     outline: 2px solid rgba(62, 127, 255, 0.5);
     outline-offset: 2px;
   }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }

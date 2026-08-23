@@ -69,20 +69,26 @@
       background-color: $rzume-blue;
       color: $white;
       border: none;
-      
+
       &:hover {
         background-color: darken($rzume-blue, 8%);
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(62, 127, 255, 0.3);
       }
-      
+
       &:active {
         transform: translateY(0);
       }
-      
+
       &:focus {
         outline: 2px solid rgba(62, 127, 255, 0.5);
         outline-offset: 2px;
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        pointer-events: none;
       }
     }
     

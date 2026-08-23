@@ -10,12 +10,13 @@
     (submitted)="onSubmit()"
   >
     <div class="newsletter-modal__buttons">
-      <button 
+      <button
         class="newsletter-modal__button newsletter-modal__button--primary"
         type="button"
+        [disabled]="newsletterForm.submitState() === 'pending'"
         (click)="newsletterForm.submitForm()"
       >
-        Subscribe
+        {{ newsletterForm.submitState() === 'pending' ? 'Submitting…' : 'Subscribe' }}
       </button>
       
       <button 

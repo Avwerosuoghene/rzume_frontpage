@@ -1,31 +1,18 @@
 <div class="newsletter-modal">
+  <button
+    mat-icon-button
+    class="newsletter-modal__close"
+    (click)="onDismiss()"
+    type="button"
+    aria-label="Close"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+
   <h2 class="newsletter-modal__title">Hey you!</h2>
   <p class="newsletter-modal__subtitle">
     Be the first to get news updates, and tips about job applications
   </p>
-  
-  <app-newsletter-form
-    #newsletterForm
-    [analyticsLocation]="analyticsLocation"
-    (submitted)="onSubmit()"
-  >
-    <div class="newsletter-modal__buttons">
-      <button
-        class="newsletter-modal__button newsletter-modal__button--primary"
-        type="button"
-        [disabled]="newsletterForm.submitState() === 'pending'"
-        (click)="newsletterForm.submitForm()"
-      >
-        {{ newsletterForm.submitState() === 'pending' ? 'Submitting…' : 'Subscribe' }}
-      </button>
-      
-      <button 
-        class="newsletter-modal__button newsletter-modal__button--secondary"
-        (click)="onDismiss()"
-        type="button"
-      >
-        Not Interested
-      </button>
-    </div>
-  </app-newsletter-form>
+
+  <app-newsletter-form-iframe class="newsletter-modal__form" height="240px"></app-newsletter-form-iframe>
 </div>

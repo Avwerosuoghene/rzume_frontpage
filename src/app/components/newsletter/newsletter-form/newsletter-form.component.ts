@@ -79,8 +79,18 @@ export class NewsletterFormComponent {
         signal: controller.signal
       });
 
-      if (!response.ok) {
-        throw new Error(`Zoho responded with status ${response.status}`);
+      // Zoho returns HTTP 200 even for genuine failures (e.g. a stale/mismatched
+      // zc_formIx renders a 200 "Problem in optin" error page), so status alone can't
+      // be trusted. Confirmed-success responses are always plain text or JSON (never a
+      // full HTML document); Zoho's error pages are a styled <html> document whose
+      // "unsubscribed.svg" icon filename makes any naive substring match on "subscri"
+      // unreliable, so the HTML-document check has to come first.
+      const body = await response.text();
+      const isHtmlErrorPage = /<html[\s>]/i.test(body);
+      const confirmsSignup = /thank you for subscribing|already subscribed/i.test(body);
+
+      if (!response.ok || isHtmlErrorPage || !confirmsSignup) {
+        throw new Error(`Zoho did not confirm the subscription (status ${response.status})`);
       }
 
       this.submitState.set('success');

@@ -43,24 +43,24 @@
   font-size: 16px;
   width: 100%;
   min-width: 140px;
-  
+
   @media (min-width: 768px) {
     height: 52px;
     padding: 16px 40px;
     font-size: 18px;
     min-width: 160px;
   }
-  
+
   &:hover {
     background-color: darken($rzume-blue, 8%);
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(62, 127, 255, 0.3);
   }
-  
+
   &:active {
     transform: translateY(0);
   }
-  
+
   &:focus {
     outline: 2px solid rgba(62, 127, 255, 0.5);
     outline-offset: 2px;

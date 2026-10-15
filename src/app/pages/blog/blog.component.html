@@ -38,7 +38,7 @@
           <p class="sidebar-title">POPULAR POSTS</p>
           <div class="popular-posts-list">
             @for (post of popularPosts; track post.id) {
-              <div class="popular-post" (click)="loadPostAsFeatured(post)">
+              <div class="popular-post" (click)="onPopularPostClick(post)">
                 <div class="popular-post-image">
                   <img [src]="post.imageUrl" [alt]="post.title" />
                 </div>

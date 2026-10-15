@@ -69,7 +69,7 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
     readTime: '5 min read',
     imageUrl: 'assets/images/The Job Search Is Broken — Here’s How Rzume Is Fixing It.jpg',
     category: 'Job Search',
-    isFeatured: true
+    isFeatured: false
   },
   {
     id: '2',
@@ -577,5 +577,9 @@ export const NEWSLETTER_SIGNUP: NewsletterSignup = {
   buttonText: 'Get Started'
 };
 
-export const FEATURED_POST = BLOG_PAGE_POSTS.find((post: BlogPagePost) => post.isFeatured) || BLOG_PAGE_POSTS[0];
-export const POPULAR_POSTS = BLOG_PAGE_POSTS.filter((post: BlogPagePost) => !post.isFeatured).slice(0, 4);
+const LATEST_POST = BLOG_PAGE_POSTS.reduce((latest: BlogPagePost, post: BlogPagePost) =>
+  new Date(post.publishedDate).getTime() > new Date(latest.publishedDate).getTime() ? post : latest
+);
+
+// A post flagged isFeatured takes priority; otherwise the blog opens on the newest post.
+export const FEATURED_POST = BLOG_PAGE_POSTS.find((post: BlogPagePost) => post.isFeatured) ?? LATEST_POST;

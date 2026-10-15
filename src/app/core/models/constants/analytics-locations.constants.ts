@@ -12,7 +12,8 @@ export const ANALYTICS_LOCATIONS = {
   
   // About page locations
   ABOUT_CTA_SECTION: 'about_cta_section',
-  
+  ABOUT_BLOG_SECTION: 'about_blog_section',
+
   // Blog page locations
   BLOG_SIDEBAR: 'blog_sidebar',
   

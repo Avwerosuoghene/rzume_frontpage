@@ -1,4 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
@@ -17,7 +18,6 @@ import {
   BlogPagePost,
   BLOG_PAGE_POSTS,
   FEATURED_POST,
-  POPULAR_POSTS,
   NEWSLETTER_SIGNUP,
   NewsletterSignup
 } from '../../core/models/mocks';
@@ -37,42 +37,39 @@ import {
 export class BlogComponent implements OnInit {
   headerConfig: HeaderConfig = HEADER_CONFIG;
   featuredPost: BlogPagePost = FEATURED_POST;
-  popularPosts: BlogPagePost[] = POPULAR_POSTS;
+  popularPosts: BlogPagePost[] = this.getOtherPosts(FEATURED_POST);
   newsletterData: NewsletterSignup = NEWSLETTER_SIGNUP;
 
   isHeaderDark: boolean = false;
   private analyticsService = inject(AnalyticsService);
-
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
     this.setActiveNavigation();
-    this.route.queryParams.subscribe(params => {
-      const postId = params['postId'];
-      if (postId) {
-        const targetPost = BLOG_PAGE_POSTS.find(post => post.id === postId);
-        if (targetPost) {
-          this.loadPostAsFeatured(targetPost);
-        }
-      }
-    });
+    // The postId query param is the single source of truth for which post is shown,
+    // whether the visitor arrived from a homepage card, a shared link, or a sidebar click.
+    this.route.queryParamMap
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(params => {
+        const targetPost = BLOG_PAGE_POSTS.find(post => post.id === params.get('postId'));
+        this.showPost(targetPost ?? FEATURED_POST);
+      });
   }
 
   private setActiveNavigation(): void {
     this.headerConfig = NavigationHelper.setActiveNavigation(this.headerConfig, '/blog');
   }
 
-  loadPostAsFeatured(post: BlogPagePost): void {
+  onPopularPostClick(post: BlogPagePost): void {
     this.analyticsService.track(AnalyticsEvent.POPULAR_POST_CLICKED, {
       post_id: post.id,
       post_title: post.title,
       location: ANALYTICS_LOCATIONS.BLOG_SIDEBAR
     });
-    
-    this.featuredPost = post;
-    this.updatePopularPosts(post);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { postId: post.id },
@@ -80,10 +77,13 @@ export class BlogComponent implements OnInit {
     });
   }
 
-  private updatePopularPosts(newFeaturedPost: BlogPagePost): void {
-    const allOtherPosts = BLOG_PAGE_POSTS.filter(post => post.id !== newFeaturedPost.id);
+  private showPost(post: BlogPagePost): void {
+    this.featuredPost = post;
+    this.popularPosts = this.getOtherPosts(post);
+  }
 
-    this.popularPosts = allOtherPosts.slice(0, 4);
+  private getOtherPosts(currentPost: BlogPagePost): BlogPagePost[] {
+    return BLOG_PAGE_POSTS.filter(post => post.id !== currentPost.id).slice(0, 4);
   }
 
   navigateToSignUp(): void {

@@ -533,6 +533,41 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
     imageUrl: 'assets/images/Multi-Hyphenate Job Hunt Fails Without a System.png',
     category: 'Career Tips',
     isFeatured: false
+  },
+  {
+    id: '8',
+    title: 'The 7-Day Follow-Up Protocol: How Proactive Candidates Get Noticed',
+    content: `<p>Over 65% of job applicants never follow up after submitting a resume online, allowing their applications to sink into the digital void of automated tracking systems. In a competitive hiring market, submitting an application and waiting passively is the equivalent of running to the goal line and refusing to take the shot. High-converting candidates don\'t rely on luck—they execute a disciplined follow-up protocol.</p>
+
+      <h2>The Mechanics of ATS Decay</h2>
+      <p>When a role opens, recruiter inbox volume peaks within the first 48 hours. By day seven, new active requisitions displace older submissions, moving your profile down the queue regardless of your qualifications. The seven-day mark is the critical window: early enough to demonstrate proactive interest while the role remains active, yet distant enough from your initial submission to avoid appearing impatient.</p>
+
+      <h2>The 3-Phase Follow-Up Lifecycle</h2>
+      <p>Executing the protocol requires structured timing across three clear operational phases:</p>
+      <ul>
+        <li><strong>Day 1: Submission &amp; Asset Mapping.</strong> Submit your tailored resume directly matched to the target role. Log the application immediately with the job link and the exact CV version attached.</li>
+        <li><strong>Day 7: The Strategic Nudge.</strong> You would get a notification to trigger a direct, value-added message to the recruiter or hiring manager. Reference your initial application date, restate your core value proposition in two concise sentences, and highlight a recent company milestone or relevant insight.</li>
+        <li><strong>Day 14: The Final Audit &amp; Decision.</strong> If silence persists after two full weeks, initiate a brief secondary touchpoint. If no response follows within 48 hours, archive the application to maintain an actionable, low-friction pipeline.</li>
+      </ul>
+
+      <h2>Structuring a High-Converting Follow-Up</h2>
+      <p>A successful follow-up is not a request for a status update; it is a brief re-assertion of value. Keep your message under 120 words:</p>
+      <ol>
+        <li><strong>Context Line:</strong> Reference the role title and submission date clearly in the subject line or opening sentence.</li>
+        <li><strong>Value Bridge:</strong> State the specific problem you solve for the team based on current company developments.</li>
+        <li><strong>Low-Friction Call to Action:</strong> Close with an open-ended question regarding their interviewing timeline rather than demanding an immediate meeting.</li>
+      </ol>
+
+      <p>Systematizing your job search turns passive waiting into active career engineering. By executing a seven-day follow-up cadence, you move your resume out of the ATS stack and into direct candidate conversations.</p>
+
+      <p><strong>Ready to never miss a follow-up window again?</strong><br>
+      <a href="https://app.rzume.site" target="_blank" rel="noopener noreferrer">Sign up for Rzume for Free</a></p>`,
+    author: 'Rzume Team',
+    publishedDate: 'October 15, 2026',
+    readTime: '3 min read',
+    imageUrl: 'assets/images/The 7-Day Follow-Up Protocol How Proactive Candidates Get Noticed.jpeg',
+    category: 'Job Search',
+    isFeatured: false
   }
 ];
 

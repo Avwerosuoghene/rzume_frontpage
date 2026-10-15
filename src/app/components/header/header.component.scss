@@ -196,6 +196,12 @@
   margin: 0;
 }
 
+.nav-item--mobile-only {
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
 .nav-link {
   @include font-body;
   font-size: $font-size-sm;
@@ -203,15 +209,25 @@
   text-decoration: none;
   font-weight: $font-weight-medium;
   transition: color 0.2s ease;
-  
+
   @media (min-width: 768px) {
     font-size: $font-size-base;
   }
-  
+
   &:hover,
   &.active {
     color: $rzume-blue;
   }
+}
+
+.nav-link--button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
 }
 
 .header-actions {

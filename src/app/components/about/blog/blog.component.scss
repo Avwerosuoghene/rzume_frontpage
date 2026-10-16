@@ -1,5 +1,6 @@
 @import '../../../styles/theme.scss';
 @import '../../../styles/fonts.scss';
+@import '../../../styles/animations.scss';
 
 .blog-section {
   padding: 60px 16px;
@@ -14,6 +15,15 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+// Revealed on scroll by AnimationService (elements marked #reveal), like the sections above.
+.section-header {
+  @include scroll-reveal;
+}
+
+.blog-grid-item {
+  @include scroll-reveal($alternate-on-mobile: true);
 }
 
 .section-header {

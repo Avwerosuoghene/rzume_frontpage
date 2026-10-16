@@ -1,13 +1,14 @@
 <section class="blog-section">
   <div class="container">
-    <div class="section-header">
+    <div #reveal class="section-header">
       <p class="section-subtitle">{{ sectionData.subtitle }}</p>
       <h2 class="section-title">{{ sectionData.title }}</h2>
     </div>
     
     <div class="blog-grid">
       @for (post of blogPosts; track post.id) {
-        <app-blog-post 
+        <app-blog-post
+          #reveal
           [post]="post"
           class="blog-grid-item">
         </app-blog-post>

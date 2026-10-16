@@ -1,6 +1,10 @@
 export interface BlogPagePost {
   id: string;
+  /** URL segment for /blog/:slug: the title lowercased, punctuation dropped, words joined by hyphens. */
+  slug: string;
   title: string;
+  /** One or two sentences shown on the post's card in the blog list. */
+  excerpt: string;
   content: string;
   author: string;
   publishedDate: string;
@@ -19,7 +23,9 @@ export interface NewsletterSignup {
 export const BLOG_PAGE_POSTS: BlogPagePost[] = [
   {
     id: '1',
+    slug: 'the-job-search-is-broken-heres-how-rzume-is-fixing-it',
     title: 'The Job Search Is Broken — Here\'s How Rzume Is Fixing It',
+    excerpt: 'For most job seekers, the job search is a maze.',
     content: `<p>For most job seekers, the job search is a maze. You apply to dozens of roles, swap between tabs, save jobs in random folders, and promise yourself you\'ll "circle back" on follow-ups you inevitably forget.</p>
 
       <p><strong>The result?</strong><br>
@@ -73,7 +79,9 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
   },
   {
     id: '2',
+    slug: 'how-to-stay-consistent-in-your-job-search-without-burning-out',
     title: 'How To Stay Consistent in Your Job Search (Without Burning Out)',
+    excerpt: 'Job searching isn\'t just about applying—it\'s about staying consistent.',
     content: `<p>Job searching isn\'t just about applying—it\'s about staying consistent. But consistency is hard when you\'re juggling deadlines, interviews, follow-ups, and emotional ups and downs. This is exactly the problem Rzume was built to solve.</p>
 
       <h2>Why Job Seekers Lose Momentum</h2>
@@ -129,7 +137,9 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
   },
   {
     id: '3',
+    slug: '5-evidence-backed-habits-of-job-seekers-who-get-hired-faster',
     title: '5 Evidence-Backed Habits of Job Seekers Who Get Hired Faster',
+    excerpt: 'Every day, millions of people search for jobs, but not everyone approaches the search the same way.',
     content: `<p>Every day, millions of people search for jobs, but not everyone approaches the search the same way. Research from LinkedIn, Indeed, Glassdoor, and leading career-strategy publications shows that certain habits consistently separate successful job seekers from everyone else.</p>
 
       <p>This article summarizes <strong>five evidence-backed behaviours</strong> that improve job-search outcomes — and how you can integrate them into your own process.</p>
@@ -262,7 +272,9 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
   },
   {
     id: '4',
+    slug: 'the-psychology-of-the-follow-up-why-applied-is-only-half-the-battle',
     title: 'The Psychology of the Follow-Up: Why "Applied" is Only Half the Battle',
+    excerpt: 'For most job seekers, the journey ends at the "Applied" button.',
     content: `<p>You've spent hours tailoring your CV. You've double-checked your cover letter for typos. You hit "Submit" and feel that brief rush of accomplishment.</p>
 
       <p>Then, the silence starts.</p>
@@ -318,7 +330,9 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
   },
   {
     id: '5',
+    slug: 'the-hidden-cost-of-a-disorganized-job-search',
     title: 'The Hidden Cost of a Disorganized Job Search',
+    excerpt: 'The job search is, by nature, chaotic.',
     content: `<p>The job search is, by nature, chaotic. You\'re juggling job boards, interview prep, networking calls, and the emotional roller coaster of getting ghosted. When most people start, they instinctively reach for the easiest tool to manage the applications: a spreadsheet.</p>
 
       <p>It seems smart at first—a central place for company names, dates, and links. But this "solution" often becomes a source of stress itself. At Rzume, we call this the <strong>Spreadsheet Tax</strong>: the hidden time, mental energy, and missed opportunities you lose to a manual tracking system.</p>
@@ -428,7 +442,9 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
   },
   {
     id: '6',
+    slug: 'managing-the-multi-role-job-search-how-to-track-your-many-professional-selves',
     title: 'Managing the Multi-Role Job Search: How to Track Your Many Professional Selves',
+    excerpt: 'In the 2026 job market, the "linear career path" is officially a relic of the past.',
     content: `<p>In the 2026 job market, the "linear career path" is officially a relic of the past. Today\'s top talent is multi-hyphenate. You might be applying for Product Manager roles on Monday, pitching yourself as a Strategic Consultant on Wednesday, and keeping an eye out for Operations Lead positions on Friday.</p>
 
       <p>While having a diverse skill set is your greatest strength, it often creates a logistical nightmare. How do you track three different versions of your professional identity without losing your mind—or worse, sending the wrong resume to the wrong recruiter?</p>
@@ -479,7 +495,9 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
   },
   {
     id: '7',
+    slug: 'why-the-multi-hyphenate-job-hunt-fails-without-a-system',
     title: 'Why the Multi-Hyphenate Job Hunt Fails Without a System',
+    excerpt: 'The modern professional identity is no longer a straight line.',
     content: `<p>The modern professional identity is no longer a straight line. If you look at the open tabs of any ambitious job seeker today, you won\'t just see one target role. You will see a complex, multi-hyphenate career strategy playing out in real-time.</p>
 
       <p>In the morning, you are applying for Senior Project Manager roles. After lunch, you are reviewing listings for Agile Consulting gigs. Over the weekend, you are tracking down stealth-mode Operations Strategy contracts.</p>
@@ -536,7 +554,9 @@ export const BLOG_PAGE_POSTS: BlogPagePost[] = [
   },
   {
     id: '8',
+    slug: 'the-7-day-follow-up-protocol-how-proactive-candidates-get-noticed',
     title: 'The 7-Day Follow-Up Protocol: How Proactive Candidates Get Noticed',
+    excerpt: 'Over 65% of job applicants never follow up after submitting a resume online. High-converting candidates don\'t rely on luck—they execute a disciplined follow-up protocol.',
     content: `<p>Over 65% of job applicants never follow up after submitting a resume online, allowing their applications to sink into the digital void of automated tracking systems. In a competitive hiring market, submitting an application and waiting passively is the equivalent of running to the goal line and refusing to take the shot. High-converting candidates don\'t rely on luck—they execute a disciplined follow-up protocol.</p>
 
       <h2>The Mechanics of ATS Decay</h2>
@@ -577,9 +597,10 @@ export const NEWSLETTER_SIGNUP: NewsletterSignup = {
   buttonText: 'Get Started'
 };
 
-const LATEST_POST = BLOG_PAGE_POSTS.reduce((latest: BlogPagePost, post: BlogPagePost) =>
-  new Date(post.publishedDate).getTime() > new Date(latest.publishedDate).getTime() ? post : latest
+// Newest first; posts published on the same day show the most recently added (highest id) first.
+export const BLOG_POSTS_NEWEST_FIRST: BlogPagePost[] = [...BLOG_PAGE_POSTS].sort((a, b) =>
+  new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime() || Number(b.id) - Number(a.id)
 );
 
-// A post flagged isFeatured takes priority; otherwise the blog opens on the newest post.
-export const FEATURED_POST = BLOG_PAGE_POSTS.find((post: BlogPagePost) => post.isFeatured) ?? LATEST_POST;
+// The large card at the top of /blog: a post flagged isFeatured takes priority, otherwise the newest.
+export const FEATURED_POST = BLOG_PAGE_POSTS.find((post: BlogPagePost) => post.isFeatured) ?? BLOG_POSTS_NEWEST_FIRST[0];

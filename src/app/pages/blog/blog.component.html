@@ -7,6 +7,7 @@
   <div class="blog-page-content">
     <!-- Hero Section with Featured Post -->
     <div class="hero-section">
+      <a class="back-link" routerLink="/blog">← All posts</a>
       <h1 class="hero-title">{{ featuredPost.title }}</h1>
       <div class="hero-meta">
         <span class="author">By {{ featuredPost.author }}</span>
@@ -35,19 +36,20 @@
       <aside class="right-column">
         <!-- Popular Posts -->
         <div class="popular-posts">
-          <p class="sidebar-title">POPULAR POSTS</p>
+          <p class="sidebar-title">MORE POSTS</p>
           <div class="popular-posts-list">
             @for (post of popularPosts; track post.id) {
-              <div class="popular-post" (click)="onPopularPostClick(post)">
+              <a class="popular-post" [routerLink]="['/blog', post.slug]" (click)="onPopularPostClick(post)">
                 <div class="popular-post-image">
                   <img [src]="post.imageUrl" [alt]="post.title" />
                 </div>
                 <div class="popular-post-content">
                   <h6 class="popular-post-title">{{ post.title }}</h6>
                 </div>
-              </div>
+              </a>
             }
           </div>
+          <a class="view-all-link" routerLink="/blog">View all posts →</a>
         </div>
 
         <!-- Newsletter Signup -->

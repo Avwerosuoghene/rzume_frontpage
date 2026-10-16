@@ -32,6 +32,10 @@ export class AnalyticsTrackingService implements OnInit {
 
   private getPageNameFromUrl(url: string): string {
     const path = url.split('?')[0].split('#')[0];
+    if (path.startsWith('/blog/')) {
+      // Individual posts share one page name; the post itself is in the tracked url.
+      return 'blog_post';
+    }
     return this.PAGE_NAME_MAP[path] || path.substring(1) || 'home';
   }
 }

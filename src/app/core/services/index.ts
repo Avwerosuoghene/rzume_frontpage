@@ -7,3 +7,4 @@ export * from './analytics/composite-analytics.service';
 export * from './analytics/google-tag.service';
 export * from './analytics/linkedin-tracking.service';
 export * from './analytics/mixpanel.service';
+export * from './blog-seo.service';

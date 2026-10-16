@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, viewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlogPostComponent } from './blog-post/blog-post.component';
-import { 
-  BlogSection, 
+import {
+  BlogSection,
   BLOG_SECTION,
-  BLOG_PAGE_POSTS,
+  BLOG_POSTS_NEWEST_FIRST,
   BlogPagePost
 } from '../../../core/models';
+import { AnimationService } from '../../../core/services/animation.service';
 
 @Component({
   selector: 'app-blog',
@@ -15,9 +16,16 @@ import {
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss']
 })
-export class BlogComponent {
+export class BlogComponent implements AfterViewInit {
   sectionData: BlogSection = BLOG_SECTION;
-  blogPosts: BlogPagePost[] = [...BLOG_PAGE_POSTS]
-    .sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime())
-    .slice(0, 3);
+  blogPosts: BlogPagePost[] = BLOG_POSTS_NEWEST_FIRST.slice(0, 3);
+
+  private animationService = inject(AnimationService);
+  private revealElements = viewChildren('reveal', { read: ElementRef<HTMLElement> });
+
+  ngAfterViewInit(): void {
+    this.animationService.initStaggeredCardAnimation(
+      this.revealElements().map(element => element.nativeElement)
+    );
+  }
 }

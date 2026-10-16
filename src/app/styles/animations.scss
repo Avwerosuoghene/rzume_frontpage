@@ -1,0 +1,100 @@
+// Shared entrance animations, matching the About page sections (see about-features.scss).
+// Import into a component stylesheet; keyframes are scoped per component by Angular.
+
+$reveal-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Plays once on page load. Use for content visible without scrolling.
+@mixin load-reveal($delay: 0s, $name: fadeInUp, $duration: 0.8s) {
+  animation: $name $duration ease-out $delay both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+// Styles for AnimationService.initStaggeredCardAnimation(), which adds .animate-ready
+// and swaps it for .animate-in when the element scrolls into view.
+// $alternate-on-mobile: below 768px, odd items slide in from the left and even from the right.
+@mixin scroll-reveal($alternate-on-mobile: false) {
+  &.animate-ready {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  &.animate-in {
+    animation: fadeInUp 0.8s $reveal-easing forwards;
+  }
+
+  @if $alternate-on-mobile {
+    @media (max-width: 767px) {
+      &.animate-ready:nth-child(odd) {
+        transform: translateX(-40px);
+      }
+
+      &.animate-ready:nth-child(even) {
+        transform: translateX(40px);
+      }
+
+      &.animate-in:nth-child(odd) {
+        animation: slideInLeft 0.7s $reveal-easing forwards;
+      }
+
+      &.animate-in:nth-child(even) {
+        animation: slideInRight 0.7s $reveal-easing forwards;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &.animate-ready,
+    &.animate-in {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+}

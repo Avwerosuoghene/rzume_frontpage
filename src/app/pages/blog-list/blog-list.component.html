@@ -1,0 +1,60 @@
+<div class="blog-list-page">
+  <div class="header-container">
+    <app-header [headerConfig]="headerConfig" [isDark]="false"></app-header>
+  </div>
+
+  <main class="blog-list-content">
+    <section class="intro">
+      <p class="eyebrow">OUR BLOG</p>
+      <h1 class="intro-title">Guides for a more organised job search</h1>
+      <p class="intro-text">{{ description }}</p>
+    </section>
+
+    <a
+      class="featured-card"
+      [routerLink]="['/blog', featuredPost.slug]"
+      (click)="onPostClick(featuredPost, 'featured')"
+    >
+      <div class="featured-image">
+        <img [ngSrc]="featuredPost.imageUrl" alt="" fill priority sizes="(min-width: 769px) 60vw, 100vw" />
+      </div>
+      <div class="featured-body">
+        <span class="badge">{{ featuredLabel }}</span>
+        <h2 class="featured-title">{{ featuredPost.title }}</h2>
+        <p class="excerpt">{{ featuredPost.excerpt }}</p>
+        <p class="meta">{{ featuredPost.publishedDate }} · {{ featuredPost.readTime }}</p>
+        <span class="read-link">Read article →</span>
+      </div>
+    </a>
+
+    <section class="all-posts" aria-labelledby="all-posts-heading">
+      <h2 #reveal id="all-posts-heading" class="all-posts-title">All posts</h2>
+      <ul class="post-grid">
+        @for (post of otherPosts; track post.id) {
+          <li #reveal>
+            <a class="post-card" [routerLink]="['/blog', post.slug]" (click)="onPostClick(post, 'grid')">
+              <div class="post-image">
+                <img [ngSrc]="post.imageUrl" alt="" fill sizes="(min-width: 1025px) 33vw, (min-width: 600px) 50vw, 100vw" />
+              </div>
+              <p class="meta">{{ post.publishedDate }} · {{ post.readTime }}</p>
+              <h3 class="post-title">{{ post.title }}</h3>
+              <p class="excerpt">{{ post.excerpt }}</p>
+            </a>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section #reveal class="signup-banner">
+      <div class="signup-text">
+        <h2 class="signup-title">{{ signup.title }}</h2>
+        <p>{{ signup.description }}</p>
+      </div>
+      <button mat-button class="rzume-button-secondary" (click)="navigateToSignUp()">
+        <span class="button-elements">{{ signup.buttonText }}</span>
+      </button>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+</div>

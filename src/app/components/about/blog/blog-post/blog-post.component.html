@@ -13,7 +13,7 @@
 
     <h3 class="post-title">{{ post.title }}</h3>
 
-    <a [routerLink]="['/blog']" [queryParams]="{ postId: post.id }" class="read-more-link" (click)="onReadMoreClick()">
+    <a [routerLink]="['/blog', post.slug]" class="read-more-link" (click)="onReadMoreClick()">
       READ MORE
       <img src="assets/icons/arrow_icon.svg" alt="arrow icon">
     </a>

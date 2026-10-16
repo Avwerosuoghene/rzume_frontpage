@@ -16,6 +16,7 @@ export const ANALYTICS_LOCATIONS = {
 
   // Blog page locations
   BLOG_SIDEBAR: 'blog_sidebar',
+  BLOG_LIST: 'blog_list',
   
   // Footer locations
   FOOTER_NEWSLETTER: 'footer_newsletter'

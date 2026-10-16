@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { MatButtonModule } from '@angular/material/button';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {
   AUTH_URLS,
   HEADER_CONFIG,
@@ -14,9 +14,11 @@ import {
 import { NavigationHelper } from '../../core/helpers';
 import { AnalyticsEvent } from '../../core/models/enums/analytics-events.enum';
 import { AnalyticsService } from '../../core/services/analytics/analytics.service';
+import { BlogSeoService } from '../../core/services/blog-seo.service';
 import {
   BlogPagePost,
   BLOG_PAGE_POSTS,
+  BLOG_POSTS_NEWEST_FIRST,
   FEATURED_POST,
   NEWSLETTER_SIGNUP,
   NewsletterSignup
@@ -29,7 +31,8 @@ import {
     CommonModule,
     HeaderComponent,
     FooterComponent,
-    MatButtonModule
+    MatButtonModule,
+    RouterLink
   ],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss'
@@ -42,20 +45,29 @@ export class BlogComponent implements OnInit {
 
   isHeaderDark: boolean = false;
   private analyticsService = inject(AnalyticsService);
+  private blogSeo = inject(BlogSeoService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
     this.setActiveNavigation();
-    // The postId query param is the single source of truth for which post is shown,
-    // whether the visitor arrived from a homepage card, a shared link, or a sidebar click.
-    this.route.queryParamMap
+    this.destroyRef.onDestroy(() => this.blogSeo.reset());
+
+    // The URL is the single source of truth for which post is shown: /blog/:slug,
+    // whether the visitor arrived from the blog list, a homepage card, a shared link, or the sidebar.
+    this.route.paramMap
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(params => {
-        const targetPost = BLOG_PAGE_POSTS.find(post => post.id === params.get('postId'));
-        this.showPost(targetPost ?? FEATURED_POST);
-      });
+      .subscribe(params => this.handleSlug(params.get('slug')));
+  }
+
+  private handleSlug(slug: string | null): void {
+    const post = BLOG_PAGE_POSTS.find(candidate => candidate.slug === slug);
+    if (!post) {
+      this.router.navigate(['/blog'], { replaceUrl: true });
+      return;
+    }
+    this.showPost(post);
   }
 
   private setActiveNavigation(): void {
@@ -69,21 +81,18 @@ export class BlogComponent implements OnInit {
       location: ANALYTICS_LOCATIONS.BLOG_SIDEBAR
     });
 
+    // The routerLink handles navigation; the page stays mounted, so scroll back to the top.
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { postId: post.id },
-      queryParamsHandling: 'merge'
-    });
   }
 
   private showPost(post: BlogPagePost): void {
     this.featuredPost = post;
     this.popularPosts = this.getOtherPosts(post);
+    this.blogSeo.setPost(post);
   }
 
   private getOtherPosts(currentPost: BlogPagePost): BlogPagePost[] {
-    return BLOG_PAGE_POSTS.filter(post => post.id !== currentPost.id).slice(0, 4);
+    return BLOG_POSTS_NEWEST_FIRST.filter(post => post.id !== currentPost.id).slice(0, 4);
   }
 
   navigateToSignUp(): void {

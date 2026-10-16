@@ -1,0 +1,197 @@
+@import '../../styles/theme.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/general_styles.scss';
+
+// Darker than $gray / $rzume-blue so small text meets 4.5:1 contrast on white.
+$text-muted: rgb(85, 87, 92);
+$link-blue: rgb(47, 102, 224);
+
+.blog-list-page {
+  min-height: 100vh;
+  background-color: $white;
+}
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.blog-list-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: 769px) {
+    padding: 120px 60px 80px;
+    gap: 56px;
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 720px;
+}
+
+.eyebrow {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 1.5px;
+  color: $link-blue;
+}
+
+.intro-text,
+.excerpt,
+.meta {
+  color: $text-muted;
+}
+
+.featured-card,
+.post-card {
+  color: inherit;
+  text-decoration: none;
+
+  img {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+
+  &:hover .featured-title,
+  &:hover .post-title {
+    color: $link-blue;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $link-blue;
+    outline-offset: 4px;
+    border-radius: 12px;
+  }
+}
+
+.featured-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+
+  @media (min-width: 769px) {
+    grid-template-columns: 3fr 2fr;
+    gap: 40px;
+  }
+}
+
+.featured-image {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+  border-radius: 12px;
+
+  @media (min-width: 769px) {
+    height: 400px;
+  }
+}
+
+.featured-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.badge {
+  align-self: flex-start;
+  background: $light-blue;
+  color: $link-blue;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.featured-title,
+.post-title {
+  transition: color 0.2s ease;
+}
+
+.read-link {
+  font-weight: $font-weight-semibold;
+  color: $link-blue;
+}
+
+.all-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 32px;
+  border-top: 1px solid $light-gray;
+}
+
+.post-grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px 32px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1025px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 48px 32px;
+  }
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.post-image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.signup-banner {
+  background: $rzume-blue;
+  border-radius: 16px;
+  padding: 32px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (min-width: 769px) {
+    padding: 48px 40px;
+  }
+
+  .signup-text {
+    flex: 1 1 420px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .signup-title,
+  p {
+    color: $white;
+  }
+}
